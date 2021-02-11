@@ -1,8 +1,9 @@
 import React, { ReactNode } from 'react'
-// import Link from 'next/link'
+import Link from 'next/link'
 import Head from 'next/head'
-import Image from 'next/image'
+// import Image from 'next/image'
 import 'tailwindcss/tailwind.css'
+import styles from '../../styles/Layout.module.css'
 
 type Props = {
   children?: ReactNode
@@ -16,7 +17,7 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => (
       <meta charSet="utf-8" />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
-    {/* <header>
+    <header>
       <nav>
         <Link href="/">
           <a>Home</a>
@@ -31,12 +32,11 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => (
         </Link>{' '}
         | <a href="/api/users">Users API</a>
       </nav>
-    </header> */}
-    <Image src="/img/hero.png" width="500" height="340" layout={'responsive'} />
+    </header>
     {children}
     <footer>
       <hr />
-      <span>I'm here to stay (Footer)</span>
+      <span className={styles.tests}>I'm here to stay (Footer)</span>
     </footer>
   </div>
 )
