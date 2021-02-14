@@ -4,7 +4,7 @@ import Head from 'next/head'
 // import Image from 'next/image'
 import 'tailwindcss/tailwind.css'
 import Header from '../Organisms/Header'
-// import styles from '../../styles/Layout.module.css'
+import styles from '../../styles/Layout.module.css'
 
 type Props = {
   children?: ReactNode
@@ -39,8 +39,7 @@ const Layout = ({ children, title = 'Souvenir' }: Props) => (
     {children}
     <footer>
       <hr />
-      <span className="m-64">I'm here to stay (Footer)</span>
-      <span className="m-64">I'm here to stay (Footer)</span>
+      <div className={styles.test}>I'm here to stay (Footer)</div>
     </footer>
   </div>
 )

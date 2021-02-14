@@ -6,7 +6,7 @@ const MainVisual = () => (
     <Image
       layout="fill"
       className="object-cover"
-      src="/hero.png"
+      src="/hero.jpg"
       sizes="100vw"
       quality="100"
       loading="eager"
