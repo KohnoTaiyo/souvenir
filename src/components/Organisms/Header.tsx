@@ -1,15 +1,33 @@
 import * as React from 'react'
 // import Image from 'next/image'
 import Logo from '../../../public/logo.svg'
-import styles from '../../styles/Header.module.css'
+// import styles from '../../styles/Header.module.css'
 
 const Header = () => (
-  <nav className="fixed w-40 h-screen border-r border-red-600 z-50 list-none text-white pt-3 pl-4">
-    <Logo className="fill-current w-32" />
-    <li className={styles.test}>Live</li>
-    <li className="">Video</li>
-    <li className="">About</li>
-    <li className="">Contact</li>
-  </nav>
+  <header className="fixed w-40 h-screen border-r border-red-600 z-50 text-white pt-6 pl-6">
+    <Logo className="fill-current w-28" />
+    <nav className="mt-hn list-none text-base leading-8 font-extralight -ml-1 flex flex-col">
+      <li>
+        <span className="hover:bg-black hover:bg-opacity-20 px-1 transition">
+          Live
+        </span>
+      </li>
+      <li>
+        <span className="hover:bg-black hover:bg-opacity-20 px-1 transition">
+          Video
+        </span>
+      </li>
+      <li>
+        <span className="hover:bg-black hover:bg-opacity-20 px-1 transition">
+          About
+        </span>
+      </li>
+      <li>
+        <span className="hover:bg-black hover:bg-opacity-20 px-1 transition">
+          Contact
+        </span>
+      </li>
+    </nav>
+  </header>
 )
 export default Header
