@@ -12,7 +12,7 @@ type Props = {
 }
 
 const Layout = ({ children, title = 'Souvenir' }: Props) => (
-  <div className="relative">
+  <div className="relative tracking-widest">
     <Head>
       <title>{title}</title>
       <meta charSet="utf-8" />
@@ -38,8 +38,9 @@ const Layout = ({ children, title = 'Souvenir' }: Props) => (
     <Header />
     {children}
     <footer>
-      <hr />
-      <div className={styles.test}>I'm here to stay (Footer)</div>
+      <div className="h-96">I'm here to stay (Footer)</div>
+      <div className="h-96">I'm here to stay (Footer)</div>
+      <div className="h-96">I'm here to stay (Footer)</div>
     </footer>
   </div>
 )
