@@ -2,7 +2,7 @@ import * as React from 'react'
 import Image from 'next/image'
 
 const LiveContents = () => (
-  <section className="bg-gray-350 font-light">
+  <section id="live" className="bg-gray-350 font-light">
     <div className="wrap xl:pl-80">
       <h2 className="title text-gray-50">Live</h2>
       <div className="grid grid-cols-3 gap-4 text-xl leading-5 text-gray-50">
@@ -35,22 +35,22 @@ const LiveContents = () => (
           </div>
         </div>
         {/* <div className="box"> */}
-        <div className="py-4 px-5 border border-gray-50 hover:bg-gray-50 hover:text-gray-350 transform hover:scale-110 duration-300 cursor-pointer">
+        <div className="py-4 px-5 border border-gray-50 hover:bg-gray-50 hover:text-gray-350 transform hover:scale-110 duration-300 cursor-pointer hover:shadow-2xl">
           <div>2021/05/05</div>
           <div className="text-right mt-12">下北沢Laguna</div>
         </div>
         {/* <div className="box"> */}
-        <div className="py-4 px-5 border border-gray-50 hover:bg-gray-50 hover:text-gray-350 transform hover:scale-110 duration-300 cursor-pointer">
+        <div className="py-4 px-5 border border-gray-50 hover:bg-gray-50 hover:text-gray-350 transform hover:scale-110 duration-300 cursor-pointer hover:shadow-2xl">
           <div>2021/05/05</div>
           <div className="text-right mt-12">下北沢Laguna</div>
         </div>
         {/* <div className="box"> */}
-        <div className="py-4 px-5 border border-gray-50 hover:bg-gray-50 hover:text-gray-350 transform hover:scale-110 duration-300 cursor-pointer">
+        <div className="py-4 px-5 border border-gray-50 hover:bg-gray-50 hover:text-gray-350 transform hover:scale-110 duration-300 cursor-pointer hover:shadow-2xl">
           <div>2021/05/05</div>
           <div className="text-right mt-12">下北沢Laguna</div>
         </div>
         {/* <div className="box"> */}
-        <div className="py-4 px-5 border border-gray-50 hover:bg-gray-50 hover:text-gray-350 transform hover:scale-110 duration-300 cursor-pointer">
+        <div className="py-4 px-5 border border-gray-50 hover:bg-gray-50 hover:text-gray-350 transform hover:scale-110 duration-300 cursor-pointer hover:shadow-2xl">
           <div>2021/05/05</div>
           <div className="text-right mt-12">下北沢Laguna</div>
         </div>
@@ -59,7 +59,7 @@ const LiveContents = () => (
             5 === 5 ? 'col-span-2' : ''
           }`}> */}
         <div
-          className={`relative flex items-end py-4 px-5 border border-gray-50 hover:bg-gray-50 hover:text-gray-350 transform hover:scale-110 duration-300 cursor-pointer ${
+          className={`relative flex items-end py-4 px-5 border border-gray-50 hover:bg-gray-50 hover:text-gray-350 transform hover:scale-110 duration-300 cursor-pointer hover:shadow-2xl ${
             5 === 5 ? 'col-span-2' : ''
           }`}>
           <div>AND MORE</div>
@@ -70,7 +70,7 @@ const LiveContents = () => (
     </div>
     {/* <style jsx>{`
       .box {
-        @apply py-4 px-5 border border-gray-50 hover:bg-gray-50 hover:text-gray-350 transform hover:scale-110 duration-300 cursor-pointer;
+        @apply py-4 px-5 border border-gray-50 hover:bg-gray-50 hover:text-gray-350 transform hover:scale-110 duration-300 cursor-pointer hover:shadow-2xl;
       }
     `}</style> */}
   </section>

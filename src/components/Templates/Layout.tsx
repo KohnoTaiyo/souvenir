@@ -4,7 +4,8 @@ import Head from 'next/head'
 // import Image from 'next/image'
 import 'tailwindcss/tailwind.css'
 import Header from '../Organisms/Header'
-import styles from '../../styles/Layout.module.css'
+// import styles from '../../styles/Layout.module.css'
+import Footer from '../Organisms/Footer'
 
 type Props = {
   children?: ReactNode
@@ -18,30 +19,9 @@ const Layout = ({ children, title = 'Souvenir' }: Props) => (
       <meta charSet="utf-8" />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
-    {/* <header className="z-50"> */}
-    {/* <nav>
-        <Link href="/">
-          <a>Home</a>
-        </Link>{' '}
-        |{' '}
-        <Link href="/about">
-          <a>About</a>
-        </Link>{' '}
-        |{' '}
-        <Link href="/users">
-          <a>Users List</a>
-        </Link>{' '}
-        | <a href="/api/users">Users API</a>
-      </nav> */}
-    {/* <MainVisual /> */}
-    {/* </header> */}
     <Header />
     {children}
-    <footer>
-      <div className="h-96">I'm here to stay (Footer)</div>
-      <div className="h-96">I'm here to stay (Footer)</div>
-      <div className="h-96">I'm here to stay (Footer)</div>
-    </footer>
+    <Footer />
   </div>
 )
 

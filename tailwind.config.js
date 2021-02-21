@@ -5,20 +5,34 @@ module.exports = {
     extend: {
       colors: {
         gray: {
-          350: '#afbaba',
+          350: '#afbab6',
         },
       },
       margin: {
-        hn: '37.5vh',
+        hn: '40vh',
       },
       padding: {
         pm: '56.25%',
       },
       height: {
-        ha: '40vh',
+        ha: '60vh',
       },
       backgroundSize: {
-        500: '100%',
+        110: '110%',
+      },
+      animation: {
+        shake: 'shake 2s infinite',
+      },
+      keyframes: {
+        shake: {
+          '0%': { transform: 'translate(2px, 0px)' },
+          '5%': { transform: 'translate(-2px, 0px)' },
+          '10%': { transform: 'translate(2px, 0px)' },
+          '15%': { transform: 'translate(-2px, 0px)' },
+          '20%': { transform: 'translate(2px, 0px)' },
+          '25%': { transform: 'translate(-2px, 0px)' },
+          '30%': { transform: 'translate(0px, 0px)' },
+        },
       },
       backgroundImage: (theme) => ({
         'hero-pattern': "url('/hero02.jpg')",
@@ -28,6 +42,7 @@ module.exports = {
   variants: {
     extend: {
       scale: ['hover'],
+      animation: ['hover'],
     },
   },
   plugins: [
