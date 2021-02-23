@@ -1,26 +1,28 @@
-import { GetStaticProps } from 'next'
-import Link from 'next/link'
+import * as React from 'react'
 
-import { Article } from '../../interfaces'
-import { sampleArticles } from '../../../utils/sample-data'
-import Layout from '../../components/Templates/Layout'
-import List from '../../components/List'
+// import { GetStaticProps } from 'next'
+// import Link from 'next/link'
 
-type Props = {
-  items: Article[]
-}
+// import { Article } from '../../interfaces'
+// import { sampleArticles } from '../../../utils/sample-data'
+// import Layout from '../../components/Templates/Layout'
+// import List from '../../components/List'
 
-const WithStaticProps = ({ items }: Props) => {
-  console.log(items)
-  return <Layout title="Users List | Next.js + TypeScript Example">aa</Layout>
-}
+// type Props = {
+//   items: Article[]
+// }
 
-export const getStaticProps: GetStaticProps = async () => {
-  // Example for including static props in a Next.js function component page.
-  // Don't forget to include the respective types for any props passed into
-  // the component.
-  const items: Article[] = sampleArticles
-  return { props: { items } }
-}
+// const WithStaticProps = ({ items }: Props) => {
+//   console.log(items)
+//   return <Layout title="Users List | Next.js + TypeScript Example">aa</Layout>
+// }
 
-export default WithStaticProps
+// export const getStaticProps: GetStaticProps = async () => {
+//   // Example for including static props in a Next.js function component page.
+//   // Don't forget to include the respective types for any props passed into
+//   // the component.
+//   const items: Article[] = sampleArticles
+//   return { props: { items } }
+// }
+
+// export default WithStaticProps
