@@ -1,8 +1,8 @@
 import * as React from 'react'
 import Link from 'next/link'
 import Music from '../../../public/music.svg'
-import Twitter from '../../../public/Twitter.svg'
-import Youtube from '../../../public/Youtube.svg'
+import Twitter from '../../../public/twitter.svg'
+import Youtube from '../../../public/youtube.svg'
 
 type Color = {
   color: string
