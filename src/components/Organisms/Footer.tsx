@@ -15,7 +15,7 @@ const Footer = () => {
           </div>
         </div>
         <nav className="mt-4 pb-4 list-none text-xl leading-10 font-light text-center text-gray-350 border-b border-gray-350">
-          <NavList hover={''} />
+          <NavList color={'350'} hover={''} />
         </nav>
       </div>
       <p className="text-center text-xs mb-2 text-gray-350 xl:pl-60">

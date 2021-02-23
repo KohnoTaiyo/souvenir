@@ -31,6 +31,7 @@ const LiveContents = () => (
               width="604"
               height="396"
               layout="responsive"
+              alt="ライブ情報"
             />
           </div>
         </div>

@@ -2,7 +2,7 @@ import * as React from 'react'
 import Image from 'next/image'
 
 const MainVisual = () => (
-  <div className="relative w-screen h-screen">
+  <div className="relative w-screen h-screen z-0">
     <Image
       layout="fill"
       className="object-cover bg-center"

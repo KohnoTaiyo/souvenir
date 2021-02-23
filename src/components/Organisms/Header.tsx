@@ -1,28 +1,183 @@
-import * as React from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
 import Logo from '../../../public/logo.svg'
 import Icons from '../Atoms/Icons'
 import NavList from '../Atoms/NavList'
+import Image from 'next/image'
 
-const Header = () => (
-  <header className="z-50 relative">
-    <div className="fixed top-7 right-7">
-      <div className="w-14 h-0.5 bg-gray-50"></div>
-      <div className="w-14 h-0.5 bg-gray-50 mt-4"></div>
-    </div>
-    <Link href="/">
-      <a className="w-full h-full">
-        <Logo className="fill-current w-48 fixed text-gray-50 mt-6 ml-6" />
-      </a>
-    </Link>
-    <div className="fixed w-60 h-screen border-r border-gray-50 text-gray-50 pl-6 hidden xl:block">
-      <nav className="mt-hn list-none text-xl leading-10 font-light -ml-1">
-        <NavList hover={'hover:bg-black hover:bg-opacity-20'} />
-      </nav>
-      <div className="p-6 absolute bottom-0 left-0 w-full">
-        <Icons color={'50'} />
+const Header = () => {
+  const [move, changeMove] = useState({
+    navRotate: '0',
+    navTopMargin: '0',
+    navBottomMargin: '3',
+    modalOpacity: '0',
+    modalVisible: 'in',
+  })
+  const [isMouseHover, setIsMouseHover] = useState(false)
+  if (process.browser) {
+    {
+      move.navRotate === '45'
+        ? document?.documentElement.classList.add('overflow-hidden')
+        : document?.documentElement.classList.remove('overflow-hidden')
+    }
+  }
+
+  const [scrollSizeChange, setScrollSizeChange] = useState({
+    top: '50',
+    list: '50',
+    icon: '50',
+  })
+  const isScrollToggle = useCallback(() => {
+    const scrollTop = document.documentElement.scrollTop
+
+    // Bar && Logo
+    {
+      scrollTop > 2230
+        ? setScrollSizeChange((scrollTopChange) => ({
+            ...scrollTopChange,
+            top: '350',
+          }))
+        : setScrollSizeChange((scrollTopChange) => ({
+            ...scrollTopChange,
+            top: '50',
+          }))
+    }
+
+    // List
+    {
+      1600 < scrollTop && scrollTop < 3600
+        ? setScrollSizeChange((scrollTopChange) => ({
+            ...scrollTopChange,
+            list: '350',
+          }))
+        : setScrollSizeChange((scrollTopChange) => ({
+            ...scrollTopChange,
+            list: '50',
+          }))
+    }
+
+    // Icon
+    {
+      ;(890 < scrollTop && scrollTop < 2850) || 3700 < scrollTop
+        ? setScrollSizeChange((scrollTopChange) => ({
+            ...scrollTopChange,
+            icon: '350',
+          }))
+        : setScrollSizeChange((scrollTopChange) => ({
+            ...scrollTopChange,
+            icon: '50',
+          }))
+    }
+  }, [])
+
+  useEffect(() => {
+    document.addEventListener('scroll', isScrollToggle, { passive: true })
+    return () => {
+      document.removeEventListener('scroll', isScrollToggle)
+    }
+  }, [])
+
+  return (
+    <header className="z-30 relative">
+      <Link href="/">
+        <a className="w-full h-full relative z-50">
+          <Logo
+            className={`fill-current w-48 fixed text-gray-${scrollSizeChange.top} mt-6 ml-6 duration-150`}
+          />
+        </a>
+      </Link>
+      <div className="fixed w-60 h-screen border-r border-gray-50 text-gray-50 pl-6 hidden xl:block">
+        <nav className="mt-hn list-none text-xl leading-10 font-light -ml-1">
+          <NavList
+            color={scrollSizeChange.list}
+            hover={'hover:bg-black hover:bg-opacity-20'}
+          />
+        </nav>
+        <div className="p-6 absolute bottom-0 left-0 w-full">
+          <Icons color={scrollSizeChange.icon} />
+        </div>
       </div>
-    </div>
-  </header>
-)
+      <div
+        className="fixed top-12 right-12 z-50 cursor-pointer"
+        onClick={() => {
+          if (move.navRotate === '0') {
+            changeMove({
+              navRotate: '45',
+              navTopMargin: '3',
+              navBottomMargin: '0',
+              modalOpacity: '100',
+              modalVisible: '',
+            })
+          } else {
+            changeMove({
+              navRotate: '0',
+              navTopMargin: '0',
+              navBottomMargin: '3',
+              modalOpacity: '0',
+              modalVisible: 'in',
+            })
+          }
+        }}>
+        <div
+          className={`w-14 h-0.5 bg-gray-${scrollSizeChange.top} duration-150 transform rotate-${move.navRotate} mt-${move.navTopMargin}`}></div>
+        <div
+          className={`w-14 h-0.5 bg-gray-${scrollSizeChange.top} duration-150 mt-${move.navBottomMargin} transform -rotate-${move.navRotate}`}></div>
+      </div>
+      <div
+        className={`opacity-${move.modalOpacity} ${move.modalVisible}visible w-screen h-screen bg-gray-800 bg-opacity-80 fixed top-0 left-0 duration-150`}>
+        <div
+          className="w-2/3 absolute"
+          onClick={() =>
+            changeMove({
+              navRotate: '0',
+              navTopMargin: '0',
+              navBottomMargin: '3',
+              modalOpacity: '0',
+              modalVisible: 'in',
+            })
+          }>
+          <div className="w-1/2 m-auto mt-hj">
+            <Link href="https://linkco.re/2esGYXNB">
+              <a target="_blank">
+                <div
+                  onMouseEnter={() => setIsMouseHover(true)}
+                  onMouseLeave={() => setIsMouseHover(false)}
+                  className="hover:shadow-2xl w-full h-full duration-150">
+                  <Image
+                    src="/jacket.jpg"
+                    width="600"
+                    height="600"
+                    layout="responsive"
+                    alt="近況報告"
+                  />
+                </div>
+                <p className="text-gray-50 mt-1 duration-150 text-shadow">
+                  {isMouseHover
+                    ? 'You are nice!'
+                    : 'Would you like listen to this music?'}
+                </p>
+              </a>
+            </Link>
+          </div>
+        </div>
+        <div
+          className="w-1/3 list-none text-gray-50 absolute right-0 bg-gray-350 h-screen text-3xl font-light"
+          style={{ lineHeight: 2 }}>
+          <div className=" w-4/5 mx-auto h-screen">
+            <div className="h-1/3 w-full"></div>
+            <div className="border-b border-gray-50 pb-3">
+              <NavList color={'50'} hover={''} />
+            </div>
+            <div className="flex justify-between w-full mt-6">
+              <Logo className="fill-current w-20 text-gray-50" />
+              <div className="w-36 mt-1.5">
+                <Icons color={'50'} />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+  )
+}
 export default Header
