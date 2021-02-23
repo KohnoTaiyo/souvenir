@@ -5,8 +5,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "type-check": "tsc",
-    "imagemin": "node index.js"
+    "type-check": "tsc"
   },
   "dependencies": {
     "next": "latest",
