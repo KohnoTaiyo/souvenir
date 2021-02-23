@@ -6,8 +6,8 @@ import NavList from '../Atoms/NavList'
 const Footer = () => {
   const year = new Date().getFullYear()
   return (
-    <section className="bg-gray-50 font-light">
-      <div className="wrap xl:pl-80">
+    <footer id="footer" className="bg-gray-50 font-light">
+      <div className="wrap lg:pl-80">
         <div className="flex justify-between pb-4 border-b border-gray-350">
           <Logo className="fill-current w-20 text-gray-350" />
           <div className="w-40 mt-3">
@@ -21,7 +21,7 @@ const Footer = () => {
       <p className="text-center text-xs mb-2 text-gray-350 xl:pl-60">
         &copy;{year} Souvenir
       </p>
-    </section>
+    </footer>
   )
 }
 export default Footer

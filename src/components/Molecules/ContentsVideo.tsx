@@ -2,7 +2,7 @@ import * as React from 'react'
 
 const ContentsVideo = () => (
   <section id="video" className="bg-gray-50 font-light shadow-as">
-    <div className="wrap xl:pl-80">
+    <div className="wrap lg:pl-80">
       <h2 className="title text-gray-350">Video</h2>
       <div className="relative w-full h-0 pb-pm overflow-hidden">
         <iframe

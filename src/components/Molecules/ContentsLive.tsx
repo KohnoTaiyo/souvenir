@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 const LiveContents = () => (
   <section id="live" className="bg-gray-350 font-light">
-    <div className="wrap xl:pl-80">
+    <div className="wrap lg:pl-80">
       <h2 className="title text-gray-50">Live</h2>
       <div className="grid grid-cols-3 gap-4 text-xl leading-5 text-gray-50">
         <div className="flex col-span-3 border-gray-50 border p-5">

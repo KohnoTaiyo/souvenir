@@ -27,12 +27,16 @@ const Header = () => {
     list: '50',
     icon: '50',
   })
+
   const isScrollToggle = useCallback(() => {
-    const scrollTop = document.documentElement.scrollTop
+    const scrollTop = window.pageYOffset
+    const positionVideo = document.getElementById('video')?.offsetTop
+    const positionContact = document.getElementById('contact')?.offsetTop
+    const positionFooter = document.getElementById('footer')?.offsetTop
 
     // Bar && Logo
-    {
-      scrollTop > 2230
+    if (positionVideo && positionContact && positionFooter) {
+      scrollTop > positionVideo && scrollTop < positionContact
         ? setScrollSizeChange((scrollTopChange) => ({
             ...scrollTopChange,
             top: '350',
@@ -41,11 +45,11 @@ const Header = () => {
             ...scrollTopChange,
             top: '50',
           }))
-    }
 
-    // List
-    {
-      1600 < scrollTop && scrollTop < 3600
+      // List
+      ;(scrollTop + window.innerHeight / 2 > positionVideo &&
+        scrollTop + window.innerHeight / 2 < positionContact) ||
+      scrollTop + window.innerHeight / 2 > positionFooter
         ? setScrollSizeChange((scrollTopChange) => ({
             ...scrollTopChange,
             list: '350',
@@ -54,11 +58,11 @@ const Header = () => {
             ...scrollTopChange,
             list: '50',
           }))
-    }
 
-    // Icon
-    {
-      ;(890 < scrollTop && scrollTop < 2850) || 3700 < scrollTop
+      // Icon
+      ;(scrollTop + window.innerHeight * 0.95 > positionVideo &&
+        scrollTop + window.innerHeight * 0.95 < positionContact) ||
+      scrollTop + window.innerHeight * 0.95 > positionFooter
         ? setScrollSizeChange((scrollTopChange) => ({
             ...scrollTopChange,
             icon: '350',
@@ -86,7 +90,8 @@ const Header = () => {
           />
         </a>
       </Link>
-      <div className="fixed w-60 h-screen border-r border-gray-50 text-gray-50 pl-6 hidden xl:block">
+      <div
+        className={`fixed w-60 h-screen border-r border-gray-${scrollSizeChange.list} text-gray-50 pl-6 duration-300 hidden lg:block`}>
         <nav className="mt-hn list-none text-xl leading-10 font-light -ml-1">
           <NavList
             color={scrollSizeChange.list}
@@ -108,6 +113,12 @@ const Header = () => {
               modalOpacity: '100',
               modalVisible: '',
             })
+            if (scrollSizeChange.top === '350') {
+              setScrollSizeChange((scrollTopChange) => ({
+                ...scrollTopChange,
+                top: '50',
+              }))
+            }
           } else {
             changeMove({
               navRotate: '0',
@@ -116,6 +127,7 @@ const Header = () => {
               modalOpacity: '0',
               modalVisible: 'in',
             })
+            isScrollToggle()
           }
         }}>
         <div
@@ -127,7 +139,7 @@ const Header = () => {
         className={`opacity-${move.modalOpacity} ${move.modalVisible}visible w-screen h-screen bg-gray-800 bg-opacity-80 fixed top-0 left-0 duration-150`}>
         <div
           className="w-2/3 absolute"
-          onClick={() =>
+          onClick={() => {
             changeMove({
               navRotate: '0',
               navTopMargin: '0',
@@ -135,7 +147,8 @@ const Header = () => {
               modalOpacity: '0',
               modalVisible: 'in',
             })
-          }>
+            isScrollToggle()
+          }}>
           <div className="w-1/2 m-auto mt-hj">
             <Link href="https://linkco.re/2esGYXNB">
               <a target="_blank">

@@ -9,7 +9,7 @@ const ContentsContact = () => {
 
   return (
     <section id="contact" className="bg-gray-350 font-light">
-      <div className="wrap xl:pl-80">
+      <div className="wrap lg:pl-80">
         <h2 className="title text-gray-50">Contact</h2>
         <form onSubmit={handleSubmit(onSubmit)} className="text-gray-50">
           <label className="block mb-1 text-lg">

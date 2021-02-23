@@ -81,6 +81,9 @@ module.exports = {
           bottom: '1.20rem',
           height: '1px',
         },
+        'mix-blend': {
+          mixBlendMode: 'difference',
+        },
       }
       addUtilities(newUtilities)
     },
