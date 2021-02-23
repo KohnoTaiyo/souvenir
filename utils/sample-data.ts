@@ -1,7 +1,7 @@
-import { User } from '../src/interfaces'
+import { Article } from '../src/interfaces'
 
 /** Dummy user data. */
-export const sampleUserData: User[] = [
+export const sampleArticles: Article[] = [
   {
     Date: '2021/05/05',
     Place: '下北沢Laguna',

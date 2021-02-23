@@ -1,6 +1,9 @@
-export type User = {
-  id: number
-  name: string
+export type Article = {
+  Date: string
+  Place: string
+  Time: string
+  Price: string
+  Guest: string
 }
 
 export type Inputs = {

@@ -8,9 +8,12 @@ module.exports = {
           350: '#afbab6',
         },
       },
+      width: {
+        wj: '30rem',
+      },
       margin: {
-        hn: '40vh',
-        hj: '30vh',
+        hn: '42vh',
+        hj: '31vh',
       },
       padding: {
         pm: '56.25%',

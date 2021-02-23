@@ -149,7 +149,7 @@ const Header = () => {
             })
             isScrollToggle()
           }}>
-          <div className="w-1/2 m-auto mt-hj">
+          <div className="w-wj m-auto mt-hj">
             <Link href="https://linkco.re/2esGYXNB">
               <a target="_blank">
                 <div
@@ -178,7 +178,18 @@ const Header = () => {
           style={{ lineHeight: 2 }}>
           <div className=" w-4/5 mx-auto h-screen">
             <div className="h-1/3 w-full"></div>
-            <div className="border-b border-gray-50 pb-3">
+            <div
+              className="border-b border-gray-50 pb-3"
+              onClick={() => {
+                changeMove({
+                  navRotate: '0',
+                  navTopMargin: '0',
+                  navBottomMargin: '3',
+                  modalOpacity: '0',
+                  modalVisible: 'in',
+                })
+                isScrollToggle()
+              }}>
               <NavList color={'50'} hover={''} />
             </div>
             <div className="flex justify-between w-full mt-6">
