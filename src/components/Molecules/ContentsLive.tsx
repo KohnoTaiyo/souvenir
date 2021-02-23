@@ -22,10 +22,10 @@ const LiveContents = () => {
           <div className="flex col-span-3 border-gray-50 border p-5">
             <div className="w-5/12 mr-5">
               {(Object.keys(articles[0]) as (keyof Article)[]).map((key) => (
-                <>
+                <div key={key}>
                   <p className="bg-gray-50 text-gray-350 py-1 px-1.5">{key}</p>
                   <p className="mt-1.5 mb-4">{articles[0][key]}</p>
-                </>
+                </div>
               ))}
             </div>
             <div className="w-7/12">
@@ -38,8 +38,10 @@ const LiveContents = () => {
               />
             </div>
           </div>
-          {articles.map((val) => (
-            <div className="py-4 px-5 border border-gray-50 hover:bg-gray-50 hover:text-gray-350 transform hover:scale-110 duration-300 cursor-pointer hover:shadow-2xl">
+          {articles.map((val, ind) => (
+            <div
+              key={ind}
+              className="py-4 px-5 border border-gray-50 hover:bg-gray-50 hover:text-gray-350 transform hover:scale-110 duration-300 cursor-pointer hover:shadow-2xl">
               <div>{val['Date']}</div>
               <div className="text-right mt-12">{val['Place']}</div>
             </div>
