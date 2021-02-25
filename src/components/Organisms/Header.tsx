@@ -6,17 +6,11 @@ import NavList from '../Atoms/NavList'
 import Image from 'next/image'
 
 const Header = () => {
-  const [move, changeMove] = useState({
-    navRotate: '0',
-    navTopMargin: '0',
-    navBottomMargin: '3',
-    modalOpacity: '0',
-    modalVisible: 'in',
-  })
+  const [move, changeMove] = useState(false)
   const [isMouseHover, setIsMouseHover] = useState(false)
   if (process.browser) {
     {
-      move.navRotate === '45'
+      move
         ? document?.documentElement.classList.add('overflow-hidden')
         : document?.documentElement.classList.remove('overflow-hidden')
     }
@@ -105,48 +99,40 @@ const Header = () => {
       <div
         className="fixed top-12 right-12 z-50 cursor-pointer"
         onClick={() => {
-          if (move.navRotate === '0') {
-            changeMove({
-              navRotate: '45',
-              navTopMargin: '3',
-              navBottomMargin: '0',
-              modalOpacity: '100',
-              modalVisible: '',
-            })
+          if (move) {
+            changeMove(false)
+            isScrollToggle()
+          } else {
+            changeMove(true)
             if (scrollSizeChange.top === '350') {
               setScrollSizeChange((scrollTopChange) => ({
                 ...scrollTopChange,
                 top: '50',
               }))
             }
-          } else {
-            changeMove({
-              navRotate: '0',
-              navTopMargin: '0',
-              navBottomMargin: '3',
-              modalOpacity: '0',
-              modalVisible: 'in',
-            })
-            isScrollToggle()
           }
         }}>
         <div
-          className={`w-14 h-0.5 bg-gray-${scrollSizeChange.top} duration-150 transform rotate-${move.navRotate} mt-${move.navTopMargin}`}></div>
+          className={`w-14 h-0.5 bg-gray-${
+            scrollSizeChange.top
+          } duration-150 transform ${
+            move ? 'rotate-45 mt-1.5' : 'rotate-0 mt-0'
+          }`}></div>
         <div
-          className={`w-14 h-0.5 bg-gray-${scrollSizeChange.top} duration-150 mt-${move.navBottomMargin} transform -rotate-${move.navRotate}`}></div>
+          className={`w-14 h-0.5 bg-gray-${
+            scrollSizeChange.top
+          } duration-150 mt-3 transform ${
+            move ? '-rotate-45 -mt-0' : 'rotate-0 mt-3'
+          }`}></div>
       </div>
       <div
-        className={`opacity-${move.modalOpacity} ${move.modalVisible}visible w-screen h-screen bg-gray-800 bg-opacity-80 fixed top-0 left-0 duration-150`}>
+        className={`w-screen h-screen bg-gray-800 bg-opacity-80 fixed top-0 left-0 duration-150 ${
+          move ? 'visible opacity-100' : 'opacity-0 invisible'
+        }`}>
         <div
           className="w-2/3 absolute"
           onClick={() => {
-            changeMove({
-              navRotate: '0',
-              navTopMargin: '0',
-              navBottomMargin: '3',
-              modalOpacity: '0',
-              modalVisible: 'in',
-            })
+            changeMove(false)
             isScrollToggle()
           }}>
           <div className="w-wj m-auto mt-hj">
@@ -181,13 +167,7 @@ const Header = () => {
             <div
               className="border-b border-gray-50 pb-3"
               onClick={() => {
-                changeMove({
-                  navRotate: '0',
-                  navTopMargin: '0',
-                  navBottomMargin: '3',
-                  modalOpacity: '0',
-                  modalVisible: 'in',
-                })
+                changeMove(false)
                 isScrollToggle()
               }}>
               <NavList color={'50'} hover={''} />
