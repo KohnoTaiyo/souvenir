@@ -7,7 +7,7 @@ const ContentsAbout = () => {
     if (scrollTop > 1300) {
       hero02?.setAttribute(
         'style',
-        'background-position-y:' + -(scrollTop * 0.2) + 'px'
+        'background-position-y:' + -(scrollTop * 0.1) + 'px'
       )
     }
   }, [])

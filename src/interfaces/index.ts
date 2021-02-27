@@ -1,9 +1,11 @@
 export type Article = {
-  Date: string
-  Place: string
-  Time: string
-  Price: string
-  Guest: string
+  id: number
+  date: string
+  place: string
+  time: string
+  price: string
+  guest: string
+  image: string
 }
 
 export type Inputs = {
@@ -12,4 +14,8 @@ export type Inputs = {
   text: string
   inquire: string
   kana: string
+}
+
+export type ProcessEnv = {
+  [key: string]: string | undefined
 }

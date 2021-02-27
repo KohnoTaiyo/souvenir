@@ -19,10 +19,12 @@ module.exports = {
         hj: '31vh',
       },
       padding: {
+        18: '4.5rem',
         pm: '56.25%',
       },
       height: {
         ha: '60vh',
+        hb: '80vh',
       },
       inset: {
         lg: '10vw',
@@ -39,17 +41,23 @@ module.exports = {
         260: '260%',
       },
       animation: {
-        shake: 'shake 2s infinite',
+        fadeH: 'fadeH .5s',
+        fadeL: 'fadeL .5s',
+        fadeR: 'fadeR .5s',
       },
       keyframes: {
-        shake: {
-          '0%': { transform: 'translate(2px, 0px)' },
-          '5%': { transform: 'translate(-2px, 0px)' },
-          '10%': { transform: 'translate(2px, 0px)' },
-          '15%': { transform: 'translate(-2px, 0px)' },
-          '20%': { transform: 'translate(2px, 0px)' },
-          '25%': { transform: 'translate(-2px, 0px)' },
-          '30%': { transform: 'translate(0px, 0px)' },
+        fadeH: {
+          '0%': { height: '100%' },
+          '50%': { height: 0 },
+          '100%': { height: '100%' },
+        },
+        fadeL: {
+          '0%': { transform: 'translateX(-120vw)', opacity: 0 },
+          '100%': { transform: 'translateX(0)', opacity: 1 },
+        },
+        fadeR: {
+          '0%': { transform: 'translateX(120vw)', opacity: 0 },
+          '100%': { transform: 'translateX(0)', opacity: 1 },
         },
       },
       backgroundImage: (theme) => ({
