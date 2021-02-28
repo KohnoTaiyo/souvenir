@@ -5,7 +5,11 @@ export type Article = {
   time: string
   price: string
   guest: string
-  image: string
+  image: { width: number; height: number; url: string }
+  createdAt: string
+  publishedAt: string
+  revisedAt: string
+  updatedAt: string
 }
 
 export type Inputs = {
