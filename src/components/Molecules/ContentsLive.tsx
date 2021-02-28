@@ -4,6 +4,7 @@ import React from 'react'
 // import { GetStaticProps } from 'next'
 // import { Article } from '../../interfaces'
 // import { sampleArticles } from '../../../utils/sample-data'
+// import { sampleArticles } from '../../../utils/sample-data'
 
 // type Props = {
 //   articles: Article[]
