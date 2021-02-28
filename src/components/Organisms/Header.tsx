@@ -172,7 +172,7 @@ const Header = () => {
               />
             </div>
             <div className="flex justify-between w-full mt-6">
-              <Logo className="fill-current w-20 text-gray-50" />
+              <Logo className="fill-current w-20 text-gray-50 h-12" />
               <div className="w-36 mt-1.5">
                 <Icons color={'50'} />
               </div>
