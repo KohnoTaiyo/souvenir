@@ -78,6 +78,10 @@ module.exports = {
           width: '100%',
           padding: '3rem 5rem 4.5rem',
         },
+        '.wrap-sp': {
+          width: '100%',
+          padding: '1.5rem 1.5rem 2rem',
+        },
         '.text-shadow': {
           textShadow: '0px 0px 20px rgba(0,0,0,1)',
         },

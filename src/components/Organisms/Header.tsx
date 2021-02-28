@@ -80,13 +80,13 @@ const Header = () => {
       <Link href="/">
         <a className="w-full h-full relative z-50">
           <Logo
-            className={`fill-current w-48 fixed text-gray-${scrollSizeChange.top} mt-6 ml-6 duration-150`}
+            className={`fill-current w-24 md:w-48 fixed text-gray-${scrollSizeChange.top} mt-4 ml-4 md:mt-6 md:ml-6 duration-150`}
           />
         </a>
       </Link>
       <div
         className={`fixed w-60 h-screen border-r border-gray-${scrollSizeChange.list} text-gray-50 pl-6 duration-300 hidden lg:block`}>
-        <nav className="mt-hn list-none text-xl leading-10 font-light -ml-1">
+        <nav className="md:mt-hn list-none text-xl leading-10 font-light -ml-1">
           <NavList
             color={scrollSizeChange.list}
             hover={'hover:bg-black hover:bg-opacity-20'}
@@ -97,7 +97,7 @@ const Header = () => {
         </div>
       </div>
       <div
-        className="fixed top-12 right-12 z-50 cursor-pointer"
+        className={`fixed top-7 right-6 sm:top-12 sm:right-12 z-50 cursor-pointer`}
         onClick={() => {
           if (move) {
             changeMove(false)
@@ -130,7 +130,7 @@ const Header = () => {
           move ? 'visible opacity-100' : 'opacity-0 invisible'
         }`}>
         <div
-          className="w-2/3 absolute"
+          className="w-2/3 absolute hidden md:block"
           onClick={() => {
             changeMove(false)
             isScrollToggle()
@@ -160,17 +160,16 @@ const Header = () => {
           </div>
         </div>
         <div
-          className="w-1/3 list-none text-gray-50 absolute right-0 bg-gray-350 h-screen text-3xl font-light"
+          className="w-full md:w-1/3 list-none text-gray-50 absolute right-0 bg-gray-350 h-screen text-3xl font-light"
           style={{ lineHeight: 2 }}>
           <div className=" w-4/5 mx-auto h-screen">
             <div className="h-1/3 w-full"></div>
-            <div
-              className="border-b border-gray-50 pb-3"
-              onClick={() => {
-                changeMove(false)
-                isScrollToggle()
-              }}>
-              <NavList color={'50'} hover={''} />
+            <div className="border-b border-gray-50 pb-3">
+              <NavList
+                color={'50'}
+                hover={''}
+                clickEvent={() => changeMove(false)}
+              />
             </div>
             <div className="flex justify-between w-full mt-6">
               <Logo className="fill-current w-20 text-gray-50" />

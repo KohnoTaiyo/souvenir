@@ -3,16 +3,28 @@ import Image from 'next/image'
 
 const MainVisual = () => (
   <div className="relative w-screen h-screen z-0">
-    <Image
-      layout="fill"
-      className="object-cover bg-center"
-      src="/hero.jpg"
-      sizes="100vw"
-      quality="100"
-      loading="eager"
-      priority={true}
-      alt="Souvenir official website"
-    />
+    <div className="hidden md:block">
+      <Image
+        layout="fill"
+        className="object-cover bg-center"
+        src="/hero.jpg"
+        quality="100"
+        loading="eager"
+        priority={true}
+        alt="Souvenir official website"
+      />
+    </div>
+    <div className="md:hidden block">
+      <Image
+        layout="fill"
+        className="object-cover bg-center"
+        src="/hero04.jpg"
+        quality="100"
+        loading="eager"
+        priority={true}
+        alt="Souvenir official website"
+      />
+    </div>
   </div>
 )
 export default MainVisual

@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+// import React, { useState, useEffect } from 'react'
+import React from 'react'
 // import Image from 'next/image'
 // import { GetStaticProps } from 'next'
 // import { Article } from '../../interfaces'
@@ -43,8 +44,10 @@ const LiveContents = () => {
   // }
 
   return (
-    <section id="live" className="bg-gray-350 font-light">
-      <div className="wrap lg:pl-80">
+    <section
+      id="live"
+      className="bg-gray-350 font-light min-h-screen sm:min-h-0">
+      <div className="md:wrap wrap-sp lg:pl-80">
         <h2 className="title text-gray-50">Live</h2>
         <div className="text-gray-50">Coming Soon...</div>
         {/* <div className="grid grid-cols-3 gap-4 text-xl leading-5 text-gray-50">

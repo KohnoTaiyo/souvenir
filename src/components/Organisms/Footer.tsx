@@ -7,7 +7,7 @@ const Footer = () => {
   const year = new Date().getFullYear()
   return (
     <footer id="footer" className="bg-gray-50 font-light">
-      <div className="wrap lg:pl-80">
+      <div className="md:wrap wrap-sp lg:pl-80">
         <div className="flex justify-between pb-4 border-b border-gray-350">
           <Logo className="fill-current w-20 text-gray-350" />
           <div className="w-40 mt-3">
