@@ -1,16 +1,17 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
-// import { GetStaticProps } from 'next'
+import { GetStaticProps } from 'next'
 import { Article } from '../../interfaces'
 import { sampleArticles } from '../../../utils/sample-data'
 
-// type Props = {
-//   articles: Article[]
-// }
+type Props = {
+  articles: Article[]
+}
 
 // const LiveContents = ({ articles }: Props) => {
 
-const LiveContents = () => {
+const LiveContents = ({ blog }: any) => {
+  console.log(blog)
   const articlesData: Article[] = sampleArticles
   const [activeLive, setActiveLive] = useState(articlesData[0])
   const [isActive, setIsActive] = useState(0)
@@ -113,18 +114,18 @@ const LiveContents = () => {
 //   return { props: { articles } }
 // }
 
-// export const getStaticProps: GetStaticProps = async () => {
-//   const key = {
-//     headers: { 'X-API-KEY': process.env.API_KEY },
-//   }
-//   const data = await fetch('https://taiyo.microcms.io/api/v1/toriaezu', key)
-//     .then((res) => res.json())
-//     .catch(() => null)
-//   return {
-//     props: {
-//       blog: data.contents,
-//     },
-//   }
-// }
+export const getStaticProps: GetStaticProps = async () => {
+  const key: any = {
+    headers: { 'X-API-KEY': process.env.API_KEY },
+  }
+  const data = await fetch('https://taiyo.microcms.io/api/v1/toriaezu', key)
+    .then((res) => res.json())
+    .catch(() => null)
+  return {
+    props: {
+      blog: data,
+    },
+  }
+}
 
 export default LiveContents
