@@ -18,7 +18,7 @@ const MainVisual = () => (
       <Image
         layout="fill"
         className="object-cover bg-center"
-        src="/hero04.jpg"
+        src="/hero05.jpg"
         quality="100"
         loading="eager"
         priority={true}
