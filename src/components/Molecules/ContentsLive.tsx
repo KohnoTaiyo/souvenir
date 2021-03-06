@@ -1,5 +1,4 @@
-// import React, { useState, useEffect } from 'react'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 // import Image from 'next/image'
 // import { GetStaticProps } from 'next'
 // import { Article } from '../../interfaces'
@@ -13,36 +12,37 @@ import React from 'react'
 // const LiveContents = ({ articles }: Props) => {
 
 const LiveContents = () => {
-  // useEffect(() => {
-  //   const key: any = {
-  //     headers: { 'X-API-KEY': process.env.API_KEY },
-  //   }
-  //   fetch('https://taiyo.microcms.io/api/v1/contents', key)
-  //     .then((res) => res.json())
-  //     .then((res) => {
-  //       setArticlesData(res.contents)
-  //       console.log(res.contents)
-  //     })
-  //     .catch(() => console.log('error'))
-  // }, [])
   // const articlesData: Article[] = sampleArticles
-  // const [articlesData, setArticlesData] = useState([])
-  // const [activeLive, setActiveLive] = useState(articlesData[0])
-  // const [isActive, setIsActive] = useState(0)
-  // const [update, setUpdate] = useState(false)
-  // const [isMouseHover, setIsMouseHover] = useState(false)
-  // const articles = () => {
-  //   if (articlesData.slice(0, 5).length === 3) {
-  //     return articlesData.slice(0, 2)
-  //   }
-  //   return articlesData.slice(0, 5)
-  // }
-  // const totalArticles = () => {
-  //   if (articles().length === 2 || articles().length === 5) {
-  //     return true
-  //   }
-  //   return false
-  // }
+  const [articlesData, setArticlesData] = useState([])
+  const [activeLive, setActiveLive] = useState(articlesData[0])
+  const [isActive, setIsActive] = useState(0)
+  const [update, setUpdate] = useState(false)
+  const [isMouseHover, setIsMouseHover] = useState(false)
+  const articles = () => {
+    if (articlesData.slice(0, 5).length === 3) {
+      return articlesData.slice(0, 2)
+    }
+    return articlesData.slice(0, 5)
+  }
+  const totalArticles = () => {
+    if (articles().length === 2 || articles().length === 5) {
+      return true
+    }
+    return false
+  }
+
+  useEffect(() => {
+    const key: any = {
+      headers: { 'X-API-KEY': process.env.NEXT_PUBLIC_API_KEY },
+    }
+    fetch('https://taiyo.microcms.io/api/v1/contents', key)
+      .then((res) => res.json())
+      .then((res) => {
+        setArticlesData(res.contents)
+        console.log(res.contents)
+      })
+      .catch(() => console.log('error'))
+  }, [])
 
   return (
     <section
@@ -51,7 +51,7 @@ const LiveContents = () => {
       <div className="md:wrap wrap-sp lg:pl-80">
         <h2 className="title text-gray-50">Live</h2>
         <div className="text-gray-50">Coming Soon...</div>
-        {/* <div className="grid grid-cols-3 gap-4 text-xl leading-5 text-gray-50">
+        <div className="grid grid-cols-3 gap-4 text-xl leading-5 text-gray-50">
           <div
             className={`flex col-span-3 border-gray-50 border p-5 overflow-hidden ${
               update ? 'animate-fadeH' : ''
@@ -63,24 +63,24 @@ const LiveContents = () => {
               </p>
               <p className="bg-gray-50 text-gray-350 py-1 px-1.5">Place</p>
               <p className={`mt-1.5 mb-4 ${update ? 'animate-fadeL' : ''}`}>
-                {activeLive.place}
+                {/* {activeLive.place} */}
               </p>
               <p className="bg-gray-50 text-gray-350 py-1 px-1.5">Time</p>
               <p className={`mt-1.5 mb-4 ${update ? 'animate-fadeL' : ''}`}>
-                {activeLive.time}
+                {/* {activeLive.time} */}
               </p>
               <p className="bg-gray-50 text-gray-350 py-1 px-1.5">Price</p>
               <p className={`mt-1.5 mb-4 ${update ? 'animate-fadeL' : ''}`}>
-                {activeLive.price}
+                {/* {activeLive.price} */}
               </p>
               <p className="bg-gray-50 text-gray-350 py-1 px-1.5">Guest</p>
               <p className={`mt-1.5 mb-4 ${update ? 'animate-fadeL' : ''}`}>
-                {activeLive.guest}
+                {/* {activeLive.guest} */}
               </p>
             </div>
             <div className="w-7/12">
               <div className="h-full relative">
-                <Image
+                {/* <Image
                   src={activeLive.image.url}
                   layout="fill"
                   alt="ライブ情報"
@@ -88,11 +88,11 @@ const LiveContents = () => {
                   className={`mt-1.5 mb-4 bg-gray-800 ${
                     update ? 'animate-fadeR' : ''
                   }`}
-                />
+                /> */}
               </div>
             </div>
           </div>
-          {articles().map((val, ind) => (
+          {/* {articles().map((val, ind) => ( */}
           {articles().map((val: any, ind: any) => (
             <div
               onClick={() => {
@@ -121,7 +121,7 @@ const LiveContents = () => {
                 isMouseHover ? 'bg-gray-350' : ''
               }`}></span>
           </div>
-        </div> */}
+        </div>
       </div>
     </section>
   )
