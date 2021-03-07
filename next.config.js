@@ -1,5 +1,5 @@
-// module.exports = {
-//   env: {
-//     API_KEY: process.env.API_KEY,
-//   },
-// }
+module.exports = {
+  images: {
+    domains: ['images.microcms-assets.io'],
+  },
+}
