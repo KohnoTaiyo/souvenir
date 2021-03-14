@@ -5,7 +5,16 @@ module.exports = {
   ],
   darkMode: false,
   theme: {
+    minHeight: {
+      live: '530px',
+    },
+    maxHeight: {
+      img: '500px',
+    },
     extend: {
+      transitionProperty: {
+        height: 'height',
+      },
       colors: {
         gray: {
           350: '#afbab6',
@@ -25,6 +34,7 @@ module.exports = {
       height: {
         ha: '60vh',
         hb: '80vh',
+        fu: '100%',
       },
       inset: {
         lg: '10vw',
@@ -43,7 +53,7 @@ module.exports = {
       animation: {
         fadeH: 'fadeH .5s',
         fadeL: 'fadeL .5s',
-        fadeR: 'fadeR .5s',
+        fadeR: 'fadeR 1s',
       },
       keyframes: {
         fadeH: {
@@ -56,8 +66,9 @@ module.exports = {
           '100%': { transform: 'translateX(0)', opacity: 1 },
         },
         fadeR: {
-          '0%': { transform: 'translateX(120vw)', opacity: 0 },
-          '100%': { transform: 'translateX(0)', opacity: 1 },
+          '0%': { opacity: 0 },
+          '35%': { opacity: 0 },
+          '100%': { opacity: 1 },
         },
       },
       backgroundImage: (theme) => ({
@@ -66,6 +77,9 @@ module.exports = {
     },
   },
   variants: {
+    variants: {
+      height: ['responsive', 'hover', 'focus'],
+    },
     extend: {
       scale: ['hover'],
       animation: ['hover'],
@@ -76,7 +90,7 @@ module.exports = {
       const newUtilities = {
         '.wrap': {
           width: '100%',
-          padding: '3rem 5rem 4.5rem',
+          padding: '5rem 5rem 7rem',
         },
         '.wrap-sp': {
           width: '100%',
@@ -85,8 +99,11 @@ module.exports = {
         '.text-shadow': {
           textShadow: '0px 0px 20px rgba(0,0,0,1)',
         },
+        '.box-shadow': {
+          boxShadow: '0px 0px 7px rgba(0,0,0,.2)',
+        },
         '.title': {
-          fontSize: '2.5rem',
+          fontSize: '4rem',
           fontWeight: '200',
           letterSpacing: '0.025rem',
           lineHeight: '1',
@@ -99,11 +116,8 @@ module.exports = {
           bottom: '1.20rem',
           height: '1px',
         },
-        'mix-blend': {
-          mixBlendMode: 'difference',
-        },
       }
-      addUtilities(newUtilities)
+      addUtilities(newUtilities, ['responsive', 'hover'])
     },
   ],
 }

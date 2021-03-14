@@ -1,65 +1,76 @@
-// import React, { useState, useEffect } from 'react'
-import React from 'react'
-// import Image from 'next/image'
-// import { GetStaticProps } from 'next'
-// import { Article } from '../../interfaces'
-// import { sampleArticles } from '../../../utils/sample-data'
-// import { sampleArticles } from '../../../utils/sample-data'
-
-// type Props = {
-//   articles: Article[]
-// }
-
-// const LiveContents = ({ articles }: Props) => {
+import React, { useState, useEffect } from 'react'
+import { Article } from '../../interfaces'
+import { defaultData } from '../../../utils/defaultData'
+import Link from 'next/link'
 
 const LiveContents = () => {
-  // useEffect(() => {
-  //   const key: any = {
-  //     headers: { 'X-API-KEY': process.env.API_KEY },
-  //   }
-  //   fetch('https://taiyo.microcms.io/api/v1/contents', key)
-  //     .then((res) => res.json())
-  //     .then((res) => {
-  //       setArticlesData(res.contents)
-  //       console.log(res.contents)
-  //     })
-  //     .catch(() => console.log('error'))
-  // }, [])
-  // const articlesData: Article[] = sampleArticles
-  // const [articlesData, setArticlesData] = useState([])
-  // const [activeLive, setActiveLive] = useState(articlesData[0])
-  // const [isActive, setIsActive] = useState(0)
-  // const [update, setUpdate] = useState(false)
-  // const [isMouseHover, setIsMouseHover] = useState(false)
-  // const articles = () => {
-  //   if (articlesData.slice(0, 5).length === 3) {
-  //     return articlesData.slice(0, 2)
-  //   }
-  //   return articlesData.slice(0, 5)
-  // }
-  // const totalArticles = () => {
-  //   if (articles().length === 2 || articles().length === 5) {
-  //     return true
-  //   }
-  //   return false
-  // }
+  const [articlesData, setArticlesData] = useState(defaultData)
+  const [activeLive, setActiveLive] = useState(articlesData[0])
+  const [isActive, setIsActive] = useState(0)
+  const [update, setUpdate] = useState(false)
+  const [isMouseHover, setIsMouseHover] = useState(false)
+  const articles = () => {
+    if (articlesData.slice(0, 5).length === 3) {
+      return articlesData.slice(0, 2)
+    }
+    return articlesData.slice(0, 5)
+  }
+  const totalArticles = () => {
+    if (articles().length === 2 || articles().length === 5) {
+      return true
+    }
+    return false
+  }
+
+  useEffect(() => {
+    let unmounted = false
+
+    const key: any = {
+      headers: { 'X-API-KEY': process.env.NEXT_PUBLIC_API_KEY },
+    }
+    const compare = (a: Article, b: Article) => {
+      let r = 0
+      a.date < b.date ? (r = 1) : (r = -1)
+      return r
+    }
+    ;(async () => {
+      if (!unmounted) {
+        const fetchDate = await fetch(
+          'https://taiyo.microcms.io/api/v1/live?limit=25',
+          key
+        )
+          .then((res) => res.json())
+          .then((res) => res.contents)
+        const sortData = fetchDate.sort(compare).slice(0, 5)
+        setArticlesData(sortData)
+        setActiveLive(sortData[0])
+      }
+    })()
+
+    return () => {
+      unmounted = true
+    }
+  }, [])
 
   return (
     <section
       id="live"
       className="bg-gray-350 font-light min-h-screen sm:min-h-0">
-      <div className="md:wrap wrap-sp lg:pl-80">
+      <div className="wrap-sp md:wrap lg:pl-80">
         <h2 className="title text-gray-50">Live</h2>
-        <div className="text-gray-50">Coming Soon...</div>
-        {/* <div className="grid grid-cols-3 gap-4 text-xl leading-5 text-gray-50">
+        <div className="grid grid-cols-3 gap-x-6 gap-y-8 text-xl leading-5 text-gray-50">
           <div
-            className={`flex col-span-3 border-gray-50 border p-5 overflow-hidden ${
+            className={`flex col-span-3 overflow-hidden min-h-live leading-6 ${
               update ? 'animate-fadeH' : ''
             }`}>
-            <div className="w-5/12 mr-5 ">
+            <div className="w-1/2 mr-5 ">
+              <p className="bg-gray-50 text-gray-350 py-1 px-1.5">Title</p>
+              <p className={`mt-1.5 mb-4 ${update ? 'animate-fadeL' : ''}`}>
+                {activeLive.title}
+              </p>
               <p className="bg-gray-50 text-gray-350 py-1 px-1.5">Date</p>
               <p className={`mt-1.5 mb-4 ${update ? 'animate-fadeL' : ''}`}>
-                {activeLive}
+                {activeLive.date}
               </p>
               <p className="bg-gray-50 text-gray-350 py-1 px-1.5">Place</p>
               <p className={`mt-1.5 mb-4 ${update ? 'animate-fadeL' : ''}`}>
@@ -79,71 +90,49 @@ const LiveContents = () => {
               </p>
             </div>
             <div className="w-7/12">
-              <div className="h-full relative">
-                <Image
-                  src={activeLive.image.url}
-                  layout="fill"
-                  alt="ライブ情報"
-                  objectFit="contain"
-                  className={`mt-1.5 mb-4 bg-gray-800 ${
-                    update ? 'animate-fadeR' : ''
-                  }`}
-                />
-              </div>
+              <img
+                src={activeLive.image.url}
+                alt="ライブ情報"
+                className={`bg-gray-350 ease-out duration-700 max-h-img m-auto ${
+                  update ? 'animate-fadeR' : ''
+                }`}
+              />
             </div>
           </div>
-          {articles().map((val, ind) => (
-          {articles().map((val: any, ind: any) => (
+          {articles().map((val: Article, ind: number) => (
             <div
               onClick={() => {
-                setActiveLive(articlesData[val['id'] - 1])
+                setActiveLive(articlesData[ind])
                 setIsActive(ind)
                 setUpdate(true)
                 setTimeout(() => setUpdate(false), 500)
               }}
               key={val['id']}
-              className={`py-4 px-5 border border-gray-50 hover:bg-gray-50 hover:text-gray-350 transform hover:scale-110 duration-300 cursor-pointer hover:shadow-2xl ${
-                isActive === val['id'] - 1 ? 'bg-gray-50 text-gray-350' : ''
+              className={`box-shadow py-4 px-5 hover:bg-gray-50 hover:text-gray-350 transform hover:scale-110 duration-300 cursor-pointer hover:shadow-2xl ${
+                isActive === ind ? 'bg-gray-50 text-gray-350' : ''
               }`}>
               <div>{val['date']}</div>
               <div className="text-right mt-12">{val['place']}</div>
             </div>
           ))}
-          <div
-            onMouseEnter={() => setIsMouseHover(true)}
-            onMouseLeave={() => setIsMouseHover(false)}
-            className={`relative flex items-end py-4 px-5 border border-gray-50 hover:bg-gray-50 hover:text-gray-350 transform hover:scale-110 duration-300 cursor-pointer hover:shadow-2xl ${
-              totalArticles() ? 'col-span-1' : 'col-span-2'
-            }`}>
-            <div>AND MORE</div>
-            <span
-              className={`bg-gray-50 andmore-position duration-300 ${
-                isMouseHover ? 'bg-gray-350' : ''
-              }`}></span>
-          </div>
-        </div> */}
+          <Link href="/live">
+            <div
+              onMouseEnter={() => setIsMouseHover(true)}
+              onMouseLeave={() => setIsMouseHover(false)}
+              className={`relative flex items-end py-4 px-5 border border-gray-50 hover:bg-gray-50 hover:text-gray-350 transform hover:scale-110 duration-300 cursor-pointer hover:shadow-2xl ${
+                totalArticles() ? 'col-span-1' : 'col-span-2'
+              }`}>
+              <div>AND MORE</div>
+              <span
+                className={`bg-gray-50 andmore-position duration-300 ${
+                  isMouseHover ? 'bg-gray-350' : ''
+                }`}></span>
+            </div>
+          </Link>
+        </div>
       </div>
     </section>
   )
 }
-
-// export const getStaticProps: GetStaticProps = async () => {
-//   const articles: Article[] = sampleArticles
-//   return { props: { articles } }
-// }
-
-// export const getStaticProps: GetStaticProps = async () => {
-//   const key: any = {
-//     headers: { 'X-API-KEY': process.env.API_KEY },
-//   }
-//   const data = await fetch('https://taiyo.microcms.io/api/v1/toriaezu', key)
-//     .then((res) => res.json())
-//     .catch(() => null)
-//   return {
-//     props: {
-//       blog: data,
-//     },
-//   }
-// }
 
 export default LiveContents
