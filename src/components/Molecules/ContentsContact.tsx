@@ -1,12 +1,24 @@
-// import React, { useState } from 'react'
-import React from 'react'
-// import { useForm } from 'react-hook-form'
-// import { Inputs } from '../../interfaces'
+import React, { useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { Inputs } from '../../interfaces'
 
 const ContentsContact = () => {
-  // const { register, handleSubmit, errors } = useForm<Inputs>()
-  // const onSubmit = (data: Inputs) => console.log(data)
-  // const [val, setVal] = useState('')
+  const { register, handleSubmit, errors } = useForm<Inputs>()
+  const onSubmit = (data: Inputs) => {
+    fetch('/src/pages/api/send', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        message: data,
+      }),
+    })
+    alert(
+      'お問い合わせありがとうございます。3日経っても連絡がない場合はお手数ですが、もう一度ご連絡ください。TwitterのDMからでもお問い合わせできます。'
+    )
+  }
+  const [val, setVal] = useState('')
 
   return (
     <section
@@ -15,7 +27,7 @@ const ContentsContact = () => {
       <div className="md:wrap wrap-sp lg:pl-80">
         <h2 className="title text-gray-50">Contact</h2>
         <div className="text-gray-50">Coming Soon...</div>
-        {/* <form onSubmit={handleSubmit(onSubmit)} className="text-gray-50">
+        <form onSubmit={handleSubmit(onSubmit)} className="text-gray-50">
           <label className="block mb-1 text-lg">
             お問い合わせ内容<span className="text-red-500">*</span>
           </label>
@@ -141,7 +153,7 @@ const ContentsContact = () => {
             value="送信する"
             className="mt-5 w-full border-2 border-gray-50 p-2 hover:bg-gray-50 hover:text-gray-350 bg-gray-350 duration-150"
           />
-        </form> */}
+        </form>
       </div>
     </section>
   )

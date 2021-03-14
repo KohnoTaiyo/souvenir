@@ -8,6 +8,7 @@
     "type-check": "tsc"
   },
   "dependencies": {
+    "@sendgrid/mail": "^7.4.2",
     "@types/react-scroll": "^1.8.2",
     "next": "latest",
     "react": "^17.0.1",
