@@ -1,5 +1,7 @@
 import React from 'react'
-import { Link } from 'react-scroll'
+import { Link as ScrollLink } from 'react-scroll'
+import { useRouter } from 'next/router'
+import Link from 'next/link'
 
 type Hover = {
   hover: string
@@ -8,44 +10,31 @@ type Hover = {
 }
 
 const NavList = (props: Hover) => {
+  const Routes = ['Top', 'Live', 'Video', 'About', 'Contact']
+  const router = useRouter()
   return (
     <>
-      <li>
-        <Link to="live" smooth={true} duration={500}>
-          <span
-            onClick={props.clickEvent}
-            className={`${props.hover} text-gray-${props.color} px-1 duration-150 cursor-pointer`}>
-            Live
-          </span>
-        </Link>
-      </li>
-      <li>
-        <Link to="video" smooth={true} duration={500}>
-          <span
-            onClick={props.clickEvent}
-            className={`${props.hover} text-gray-${props.color} px-1 duration-150 cursor-pointer`}>
-            Video
-          </span>
-        </Link>
-      </li>
-      <li>
-        <Link to="about" smooth={true} duration={500}>
-          <span
-            onClick={props.clickEvent}
-            className={`${props.hover} text-gray-${props.color} px-1 duration-150 cursor-pointer`}>
-            About
-          </span>
-        </Link>
-      </li>
-      <li>
-        <Link to="contact" smooth={true} duration={500}>
-          <span
-            onClick={props.clickEvent}
-            className={`${props.hover} text-gray-${props.color} px-1 duration-150 cursor-pointer`}>
-            Contact
-          </span>
-        </Link>
-      </li>
+      {Routes.map((val) => (
+        <li key={val}>
+          {router.pathname === '/' ? (
+            <ScrollLink to={val.toLowerCase()} smooth={true} duration={500}>
+              <span
+                onClick={props.clickEvent}
+                className={`${props.hover} text-gray-${props.color} px-1 duration-150 cursor-pointer`}>
+                {val}
+              </span>
+            </ScrollLink>
+          ) : (
+            <Link href={'/#' + val.toLowerCase()}>
+              <span
+                onClick={props.clickEvent}
+                className={`${props.hover} text-gray-350 px-1 duration-150 cursor-pointer`}>
+                {val}
+              </span>
+            </Link>
+          )}
+        </li>
+      ))}
     </>
   )
 }

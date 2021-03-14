@@ -18,7 +18,7 @@ const Footer = () => {
           <NavList color={'350'} hover={''} />
         </nav>
       </div>
-      <p className="text-center text-xs mb-2 text-gray-350 xl:pl-60">
+      <p className="text-center text-xs pb-2 text-gray-350 lg:pl-60">
         &copy;{year} Souvenir
       </p>
     </footer>

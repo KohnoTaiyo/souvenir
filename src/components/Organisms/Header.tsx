@@ -4,10 +4,19 @@ import Logo from '../../../public/logo.svg'
 import Icons from '../Atoms/Icons'
 import NavList from '../Atoms/NavList'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 
 const Header = () => {
+  const router = useRouter()
   const [move, changeMove] = useState(false)
   const [isMouseHover, setIsMouseHover] = useState(false)
+  const [scrollSizeChange, setScrollSizeChange] = useState({
+    top: '50',
+    list: '50',
+    icon: '50',
+  })
+  let livePageColor = move ? '50' : '350'
+
   if (process.browser) {
     {
       move
@@ -15,12 +24,6 @@ const Header = () => {
         : document?.documentElement.classList.remove('overflow-hidden')
     }
   }
-
-  const [scrollSizeChange, setScrollSizeChange] = useState({
-    top: '50',
-    list: '50',
-    icon: '50',
-  })
 
   const isScrollToggle = useCallback(() => {
     const scrollTop = window.pageYOffset
@@ -30,7 +33,7 @@ const Header = () => {
 
     // Bar && Logo
     if (positionVideo && positionContact && positionFooter) {
-      scrollTop > positionVideo && scrollTop < positionContact
+      scrollTop > positionVideo + -10 && scrollTop < positionContact
         ? setScrollSizeChange((scrollTopChange) => ({
             ...scrollTopChange,
             top: '350',
@@ -80,12 +83,20 @@ const Header = () => {
       <Link href="/">
         <a className="w-full h-full relative z-50">
           <Logo
-            className={`fill-current w-24 md:w-48 fixed text-gray-${scrollSizeChange.top} mt-4 ml-4 md:mt-6 md:ml-6 duration-150`}
+            className={`fill-current w-24 md:w-48 fixed text-gray-${
+              scrollSizeChange.top
+            } mt-4 ml-4 md:mt-6 md:ml-6 duration-150 ${
+              router.pathname !== '/' ? 'text-gray-' + livePageColor : ''
+            }`}
           />
         </a>
       </Link>
       <div
-        className={`fixed w-60 h-screen border-r border-gray-${scrollSizeChange.list} text-gray-50 pl-6 duration-300 hidden lg:block`}>
+        className={`fixed w-60 h-screen border-r border-gray-${
+          scrollSizeChange.list
+        } text-gray-50 pl-6 duration-300 hidden lg:block ${
+          router.pathname !== '/' ? 'border-gray-350' : ''
+        }`}>
         <nav className="md:mt-hn list-none text-xl leading-10 font-light -ml-1">
           <NavList
             color={scrollSizeChange.list}
@@ -93,7 +104,9 @@ const Header = () => {
           />
         </nav>
         <div className="p-6 absolute bottom-0 left-0 w-full">
-          <Icons color={scrollSizeChange.icon} />
+          <Icons
+            color={router.pathname === '/' ? scrollSizeChange.icon : '350'}
+          />
         </div>
       </div>
       <div
@@ -117,12 +130,16 @@ const Header = () => {
             scrollSizeChange.top
           } duration-150 transform ${
             move ? 'rotate-45 mt-1.5' : 'rotate-0 mt-0'
+          } ${
+            router.pathname !== '/' ? 'bg-gray-' + livePageColor : ''
           }`}></div>
         <div
           className={`w-14 h-0.5 bg-gray-${
             scrollSizeChange.top
           } duration-150 mt-3 transform ${
             move ? '-rotate-45 -mt-0' : 'rotate-0 mt-3'
+          } ${
+            router.pathname !== '/' ? 'bg-gray-' + livePageColor : ''
           }`}></div>
       </div>
       <div
