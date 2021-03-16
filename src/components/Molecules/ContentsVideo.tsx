@@ -1,10 +1,14 @@
 import * as React from 'react'
 
 const ContentsVideo = () => (
-  <section id="video" className="bg-gray-50 font-light min-h-screen sm:min-h-0">
+  <section
+    id="video"
+    className="bg-gray-50 font-light min-h-video flex items-center justify-center relative">
+    <h2 className="title text-gray-350 lg:text-left lg:text-6xl absolute top-10 left-0 right-0 m-auto lg:top-20 lg:left-80">
+      Video
+    </h2>
     <div className="md:wrap wrap-sp lg:pl-80">
-      <h2 className="title text-gray-350">Video</h2>
-      <div className="relative w-full h-0 pb-pm overflow-hidden">
+      <div className="relative w-full h-0 pb-pm overflow-hidden ">
         <iframe
           width="560"
           height="365"

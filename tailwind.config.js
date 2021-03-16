@@ -7,6 +7,7 @@ module.exports = {
   theme: {
     minHeight: {
       live: '530px',
+      video: '90vh',
     },
     maxHeight: {
       img: '500px',
@@ -72,17 +73,17 @@ module.exports = {
         },
       },
       backgroundImage: (theme) => ({
+        'hero-pattern-sp': "url('/hero02_sp.jpg')",
         'hero-pattern': "url('/hero02.jpg')",
       }),
     },
   },
   variants: {
-    variants: {
-      height: ['responsive', 'hover', 'focus'],
-    },
     extend: {
+      height: ['responsive', 'hover', 'focus'],
       scale: ['hover'],
       animation: ['hover'],
+      boxShadow: ['responsive'],
     },
   },
   plugins: [
@@ -94,7 +95,7 @@ module.exports = {
         },
         '.wrap-sp': {
           width: '100%',
-          padding: '1.5rem 1.5rem 2rem',
+          padding: '3rem 1.5rem 4rem',
         },
         '.text-shadow': {
           textShadow: '0px 0px 20px rgba(0,0,0,1)',
@@ -103,11 +104,12 @@ module.exports = {
           boxShadow: '0px 0px 7px rgba(0,0,0,.2)',
         },
         '.title': {
-          fontSize: '4rem',
+          fontSize: '2.5rem',
           fontWeight: '200',
           letterSpacing: '0.025rem',
           lineHeight: '1',
-          marginBottom: '1.5rem',
+          marginBottom: '3rem',
+          textAlign: 'center',
         },
         '.andmore-position': {
           position: 'absolute',

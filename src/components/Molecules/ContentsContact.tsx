@@ -5,7 +5,7 @@ import { Inputs } from '../../interfaces'
 const ContentsContact = () => {
   const { register, handleSubmit, errors } = useForm<Inputs>()
   const onSubmit = (data: Inputs) => {
-    fetch('/src/pages/api/send', {
+    fetch('/api/send', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -25,8 +25,7 @@ const ContentsContact = () => {
       id="contact"
       className="bg-gray-350 font-light min-h-screen sm:min-h-0">
       <div className="md:wrap wrap-sp lg:pl-80">
-        <h2 className="title text-gray-50">Contact</h2>
-        <div className="text-gray-50">Coming Soon...</div>
+        <h2 className="title text-gray-50 lg:text-left lg:text-6xl">Contact</h2>
         <form onSubmit={handleSubmit(onSubmit)} className="text-gray-50">
           <label className="block mb-1 text-lg">
             お問い合わせ内容<span className="text-red-500">*</span>

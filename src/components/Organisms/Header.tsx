@@ -179,19 +179,20 @@ const Header = () => {
         <div
           className="w-full md:w-1/3 list-none text-gray-50 absolute right-0 bg-gray-350 h-screen text-3xl font-light"
           style={{ lineHeight: 2 }}>
-          <div className=" w-4/5 mx-auto h-screen">
-            <div className="h-1/3 w-full"></div>
-            <div className="border-b border-gray-50 pb-3">
-              <NavList
-                color={'50'}
-                hover={''}
-                clickEvent={() => changeMove(false)}
-              />
-            </div>
-            <div className="flex justify-between w-full mt-6">
-              <Logo className="fill-current w-20 text-gray-50 h-12" />
-              <div className="w-36 mt-1.5">
-                <Icons color={'50'} />
+          <div className="w-4/5 mx-auto h-screen flex justify-center items-center">
+            <div>
+              <div className="border-b border-gray-50 pb-3 w-72">
+                <NavList
+                  color={'50'}
+                  hover={''}
+                  clickEvent={() => changeMove(false)}
+                />
+              </div>
+              <div className="flex justify-between w-full mt-6">
+                <Logo className="fill-current w-20 text-gray-50 h-12" />
+                <div className="w-36 mt-1.5">
+                  <Icons color={'50'} />
+                </div>
               </div>
             </div>
           </div>

@@ -10,13 +10,13 @@ const LiveContents = () => {
   const [update, setUpdate] = useState(false)
   const [isMouseHover, setIsMouseHover] = useState(false)
   const articles = () => {
-    if (articlesData.slice(0, 5).length === 3) {
+    if (articlesData.slice(0, 3).length === 3) {
       return articlesData.slice(0, 2)
     }
-    return articlesData.slice(0, 5)
+    return articlesData.slice(0, 3)
   }
   const totalArticles = () => {
-    if (articles().length === 2 || articles().length === 5) {
+    if (articles().length === 2) {
       return true
     }
     return false
@@ -57,13 +57,22 @@ const LiveContents = () => {
       id="live"
       className="bg-gray-350 font-light min-h-screen sm:min-h-0">
       <div className="wrap-sp md:wrap lg:pl-80">
-        <h2 className="title text-gray-50">Live</h2>
-        <div className="grid grid-cols-3 gap-x-6 gap-y-8 text-xl leading-5 text-gray-50">
+        <h2 className="title text-gray-50 lg:text-left lg:text-6xl">Live</h2>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-8 text-xl leading-5 text-gray-50">
           <div
-            className={`flex col-span-3 overflow-hidden min-h-live leading-6 ${
+            className={`block md:flex col-span-2 md:col-span-3 overflow-hidden min-h-live leading-6 ${
               update ? 'animate-fadeH' : ''
             }`}>
-            <div className="w-1/2 mr-5 ">
+            {/* <div className="block md:hidden w-full mb-6">
+              <img
+                src={activeLive.image.url}
+                alt="ライブ情報"
+                className={`bg-gray-350 ease-out duration-700 max-h-img m-auto ${
+                  update ? 'animate-fadeR' : ''
+                }`}
+              />
+            </div> */}
+            <div className="w-full md:w-1/2 mr-5 ">
               <p className="bg-gray-50 text-gray-350 py-1 px-1.5">Title</p>
               <p className={`mt-1.5 mb-4 ${update ? 'animate-fadeL' : ''}`}>
                 {activeLive.title}
@@ -89,7 +98,7 @@ const LiveContents = () => {
                 {activeLive.guest}
               </p>
             </div>
-            <div className="w-7/12">
+            <div className="hidden md:block w-7/12">
               <img
                 src={activeLive.image.url}
                 alt="ライブ情報"
@@ -120,7 +129,7 @@ const LiveContents = () => {
               onMouseEnter={() => setIsMouseHover(true)}
               onMouseLeave={() => setIsMouseHover(false)}
               className={`relative flex items-end py-4 px-5 border border-gray-50 hover:bg-gray-50 hover:text-gray-350 transform hover:scale-110 duration-300 cursor-pointer hover:shadow-2xl ${
-                totalArticles() ? 'col-span-1' : 'col-span-2'
+                totalArticles() ? 'col-span-2 md:col-span-1' : 'col-span-2'
               }`}>
               <div>AND MORE</div>
               <span

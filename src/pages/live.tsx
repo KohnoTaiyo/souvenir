@@ -48,29 +48,39 @@ const LivePage = () => {
     <Layout title="All Live | Souvenir">
       <section className="bg-gray-50 font-light text-gray-350">
         <div className="wrap-sp md:wrap lg:pl-80">
-          <h2 className="title">All Live</h2>
+          <h2 className="title lg:text-left lg:text-6xl">All Live</h2>
           {allLives.map((val: Article) => (
             <div
               onClick={openEvent}
               key={val['id']}
-              className={`box-shadow mt-8 py-4 px-5 transform hover:scale-105 duration-300 cursor-pointer hover:shadow-2xl`}>
+              className={`box-shadow mt-8 py-4 px-5 transform hover:scale-100 lg:hover:scale-105 duration-300 cursor-pointer lg:hover:shadow-2xl`}>
               <div>
                 {val['date']}
                 <br />
                 {val['title']}
               </div>
               <div
-                className={`flex justify-between h-0 opacity-0 duration-500 text-gray-50 invisible`}>
-                <div className="w-1/2 mr-2 bg-gray-350 p-4">
-                  {val['place']}
-                  <br />
-                  {val['time']}
-                  <br />
-                  {val['price']}
-                  <br />
-                  {val['guest']}
+                className={`block lg:flex justify-between h-0 opacity-0 duration-500 text-gray-50 invisible`}>
+                <div className="w-full mb-4 block lg:hidden">
+                  <img
+                    src={val.image.url}
+                    alt="ライブ情報"
+                    className={`max-h-img m-auto`}
+                  />
                 </div>
-                <div className="w-1/2 ml-2">
+                <div className="lg:w-1/2 lg:mr-2 bg-gray-350 px-4 py-3">
+                  <p className="border-b border-gray-50 pb-1 mb-2">
+                    Place : {val['place']}
+                  </p>
+                  <p className="border-b border-gray-50 pb-1 mb-2">
+                    Time : {val['time']}
+                  </p>
+                  <p className="border-b border-gray-50 pb-1 mb-2">
+                    Price : {val['price']}
+                  </p>
+                  <p>Guest : {val['guest']}</p>
+                </div>
+                <div className="w-1/2 ml-2 hidden lg:block">
                   <img
                     src={val.image.url}
                     alt="ライブ情報"
