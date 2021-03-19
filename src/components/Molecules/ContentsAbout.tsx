@@ -32,8 +32,8 @@ const ContentsAbout = () => {
         </h2>
       </div>
       <div className="md:wrap wrap-sp text-gray-350 bg-gray-50 lg:pl-80">
-        <p>杉山悠佑　Guitar,Vocal（R）</p>
-        <p>近藤空良　Bass（L）</p>
+        <p>杉山悠佑　Guitar,Vocal（L）</p>
+        <p>近藤空良　Bass（R）</p>
         <p className="mt-10">
           千葉
           <br />

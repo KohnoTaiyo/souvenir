@@ -4,8 +4,8 @@ import { Inputs } from '../../interfaces'
 
 const ContentsContact = () => {
   const { register, handleSubmit, errors } = useForm<Inputs>()
-  const onSubmit = (data: Inputs) => {
-    fetch('/api/send', {
+  const onSubmit = async (data: Inputs) => {
+    await fetch('/api/send', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
