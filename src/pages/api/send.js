@@ -16,7 +16,7 @@ export default async function (req) {
     <br>
     <p>${message.text}</p>`,
   }
-  sgMail
+  await sgMail
     .send(content)
     .then(() => console.log(content))
     .catch(() => console.log('error'))
