@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form'
 import { Inputs } from '../../interfaces'
 
 const ContentsContact = () => {
-  const { register, handleSubmit, errors } = useForm<Inputs>()
+  const { register, handleSubmit, reset, errors } = useForm<Inputs>()
   const onSubmit = (data: Inputs) => {
     fetch('/api/send', {
       method: 'POST',
@@ -17,6 +17,7 @@ const ContentsContact = () => {
     alert(
       'お問い合わせありがとうございます。3日経っても連絡がない場合はお手数ですが、もう一度ご連絡ください。TwitterのDMからでもお問い合わせできます。'
     )
+    reset()
   }
   const [val, setVal] = useState('')
 

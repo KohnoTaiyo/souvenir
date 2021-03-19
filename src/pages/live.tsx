@@ -51,10 +51,9 @@ const LivePage = () => {
           <h2 className="title lg:text-left lg:text-6xl">All Live</h2>
           {allLives.map((val: Article) => (
             <div
-              onClick={openEvent}
               key={val['id']}
               className={`box-shadow mt-8 py-4 px-5 transform hover:scale-100 lg:hover:scale-105 duration-300 cursor-pointer lg:hover:shadow-2xl`}>
-              <div>
+              <div onClick={openEvent}>
                 {val['date']}
                 <br />
                 {val['title']}
