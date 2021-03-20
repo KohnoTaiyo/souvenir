@@ -18,6 +18,7 @@ const ContentsContact = () => {
       'お問い合わせありがとうございます。3日経っても連絡がない場合はお手数ですが、もう一度ご連絡ください。TwitterのDMからでもお問い合わせできます。'
     )
     reset()
+    setVal('')
   }
   const [val, setVal] = useState('')
 

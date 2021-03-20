@@ -63,23 +63,14 @@ const LiveContents = () => {
             className={`block md:flex col-span-2 md:col-span-3 overflow-hidden min-h-live leading-6 ${
               update ? 'animate-fadeH' : ''
             }`}>
-            {/* <div className="block md:hidden w-full mb-6">
-              <img
-                src={activeLive.image.url}
-                alt="ライブ情報"
-                className={`bg-gray-350 ease-out duration-700 max-h-img m-auto ${
-                  update ? 'animate-fadeR' : ''
-                }`}
-              />
-            </div> */}
             <div className="w-full md:w-1/2 mr-5 ">
-              <p className="bg-gray-50 text-gray-350 py-1 px-1.5">Title</p>
-              <p className={`mt-1.5 mb-4 ${update ? 'animate-fadeL' : ''}`}>
-                {activeLive.title}
-              </p>
               <p className="bg-gray-50 text-gray-350 py-1 px-1.5">Date</p>
               <p className={`mt-1.5 mb-4 ${update ? 'animate-fadeL' : ''}`}>
                 {activeLive.date}
+              </p>
+              <p className="bg-gray-50 text-gray-350 py-1 px-1.5">Title</p>
+              <p className={`mt-1.5 mb-4 ${update ? 'animate-fadeL' : ''}`}>
+                {activeLive.title}
               </p>
               <p className="bg-gray-50 text-gray-350 py-1 px-1.5">Place</p>
               <p className={`mt-1.5 mb-4 ${update ? 'animate-fadeL' : ''}`}>

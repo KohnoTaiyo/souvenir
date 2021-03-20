@@ -16,6 +16,9 @@ module.exports = {
       transitionProperty: {
         height: 'height',
       },
+      screens: {
+        '3xl': '2000px',
+      },
       colors: {
         gray: {
           350: '#afbab6',
@@ -40,6 +43,20 @@ module.exports = {
       inset: {
         lg: '10vw',
         xl: '25vw',
+        ot: '62px',
+        ol: '67px',
+        uvt: '51px',
+        uvl: '90px',
+        et: '49px',
+        el: '135px',
+        nt: '45px',
+        nl: '159px',
+        it: '40px',
+        il: '188px',
+        itt: '26px',
+        itl: '190px',
+        rt: '35px',
+        rl: '195px',
       },
       backgroundSize: {
         110: '110%',
