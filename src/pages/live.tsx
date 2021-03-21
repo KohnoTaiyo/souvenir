@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Layout from '../components/Templates/Layout'
 import { Article } from '../interfaces'
 import { defaultData } from '../../utils/defaultData'
+import Image from 'next/image'
 
 const LivePage = () => {
   const [allLives, setAllLives] = useState(defaultData)
@@ -20,7 +21,7 @@ const LivePage = () => {
     ;(async () => {
       if (!unmounted) {
         const fetchDate = await fetch(
-          'https://taiyo.microcms.io/api/v1/live?limit=25',
+          'https://souvenir.microcms.io/api/v1/live?limit=25',
           key
         )
           .then((res) => res.json())
@@ -46,33 +47,48 @@ const LivePage = () => {
 
   return (
     <Layout title="All Live | Souvenir">
-      <section className="bg-gray-50 font-light text-gray-350">
-        <div className="wrap-sp md:wrap lg:pl-80">
-          <h2 className="title">All Live</h2>
+      <section className="bg-gray-50 font-light text-gray-350 lg:pl-60">
+        <div className="2xl:wrap-big wrap-sp md:wrap">
+          <h2 className="title lg:text-left lg:text-6xl">All Live</h2>
           {allLives.map((val: Article) => (
             <div
-              onClick={openEvent}
               key={val['id']}
-              className={`box-shadow mt-8 py-4 px-5 transform hover:scale-105 duration-300 cursor-pointer hover:shadow-2xl`}>
-              <div>
+              className={`box-shadow mt-8 py-4 px-5 transform hover:scale-100 lg:hover:scale-105  duration-300 cursor-pointer lg:hover:shadow-2xl`}>
+              <div onClick={openEvent}>
                 {val['date']}
                 <br />
                 {val['title']}
               </div>
               <div
-                className={`flex justify-between h-0 opacity-0 duration-500 text-gray-50 invisible`}>
-                <div className="w-1/2 mr-2 bg-gray-350 p-4">
-                  {val['place']}
-                  <br />
-                  {val['time']}
-                  <br />
-                  {val['price']}
-                  <br />
-                  {val['guest']}
-                </div>
-                <div className="w-1/2 ml-2">
-                  <img
+                className={`block lg:flex justify-between h-0 opacity-0 duration-500 text-gray-50 invisible`}>
+                <div className="w-full mb-4 block lg:hidden">
+                  <Image
+                    layout="responsive"
                     src={val.image.url}
+                    width={val.image.width}
+                    height={val.image.height}
+                    alt="ライブ情報"
+                    className={`max-h-img m-auto`}
+                  />
+                </div>
+                <div className="lg:w-1/2 lg:mr-2 bg-gray-350 px-4 py-3">
+                  <p className="border-b border-gray-50 pb-1 mb-2">
+                    Place : {val['place']}
+                  </p>
+                  <p className="border-b border-gray-50 pb-1 mb-2">
+                    Time : {val['time']}
+                  </p>
+                  <p className="border-b border-gray-50 pb-1 mb-2">
+                    Price : {val['price']}
+                  </p>
+                  <p>Guest : {val['guest']}</p>
+                </div>
+                <div className="w-1/2 ml-2 hidden lg:block">
+                  <Image
+                    layout="responsive"
+                    src={val.image.url}
+                    width={val.image.width}
+                    height={val.image.height}
                     alt="ライブ情報"
                     className={`max-h-img m-auto`}
                   />

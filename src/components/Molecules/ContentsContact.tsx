@@ -1,21 +1,35 @@
-// import React, { useState } from 'react'
+import React, { useState } from 'react'
 import React from 'react'
-// import { useForm } from 'react-hook-form'
-// import { Inputs } from '../../interfaces'
+import { useForm } from 'react-hook-form'
+import { Inputs } from '../../interfaces'
 
 const ContentsContact = () => {
-  // const { register, handleSubmit, errors } = useForm<Inputs>()
-  // const onSubmit = (data: Inputs) => console.log(data)
-  // const [val, setVal] = useState('')
+  const { register, handleSubmit, reset, errors } = useForm<Inputs>()
+  const onSubmit = (data: Inputs) => {
+    fetch('/api/send', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        message: data,
+      }),
+    })
+    alert(
+      'お問い合わせありがとうございます。3日経っても連絡がない場合はお手数ですが、もう一度ご連絡ください。TwitterのDMからでもお問い合わせできます。'
+    )
+    reset()
+    setVal('')
+  }
+  const [val, setVal] = useState('')
 
   return (
     <section
       id="contact"
-      className="bg-gray-350 font-light min-h-screen sm:min-h-0">
-      <div className="md:wrap wrap-sp lg:pl-80">
-        <h2 className="title text-gray-50">Contact</h2>
-        <div className="text-gray-50">Coming Soon...</div>
-        {/* <form onSubmit={handleSubmit(onSubmit)} className="text-gray-50">
+      className="bg-gray-350 font-light min-h-screen sm:min-h-0 lg:pl-60">
+      <div className="xl:wrap-big md:wrap wrap-sp">
+        <h2 className="title text-gray-50 lg:text-left lg:text-6xl">Contact</h2>
+        <form onSubmit={handleSubmit(onSubmit)} className="text-gray-50">
           <label className="block mb-1 text-lg">
             お問い合わせ内容<span className="text-red-500">*</span>
           </label>
@@ -56,7 +70,7 @@ const ContentsContact = () => {
             type="text"
             name="name"
             placeholder="杉山 悠佑"
-            className="text-gray-900 w-full p-1 focus:outline-none"
+            className="text-gray-900 w-full p-1 focus:outline-none rounded-none"
             autoComplete="name"
             ref={register({
               required: 'お名前が入力されていません',
@@ -77,7 +91,7 @@ const ContentsContact = () => {
             type="text"
             name="kana"
             placeholder="スギヤマ ユウスケ"
-            className="text-gray-900 w-full p-1 focus:outline-none"
+            className="text-gray-900 w-full p-1 focus:outline-none rounded-none"
             autoComplete="name"
             ref={register({
               required: 'お名前が入力されていません',
@@ -98,7 +112,7 @@ const ContentsContact = () => {
             type="text"
             name="email"
             placeholder="souvenir@souvenir.com"
-            className="text-gray-900 w-full p-1 focus:outline-none"
+            className="text-gray-900 w-full p-1 focus:outline-none rounded-none"
             autoComplete="email"
             inputMode="url"
             ref={register({
@@ -123,7 +137,7 @@ const ContentsContact = () => {
           <textarea
             name="text"
             placeholder="予約名(フリガナ)、予約日、チケット枚数など"
-            className="text-gray-900 w-full p-1 h-60 min-h-full focus:outline-none"
+            className="text-gray-900 w-full p-1 h-60 min-h-full focus:outline-none rounded-none"
             ref={register({
               required: 'お問い合わせ内容が入力されていません',
               maxLength: {
@@ -139,9 +153,9 @@ const ContentsContact = () => {
           <input
             type="submit"
             value="送信する"
-            className="mt-5 w-full border-2 border-gray-50 p-2 hover:bg-gray-50 hover:text-gray-350 bg-gray-350 duration-150"
+            className="mt-5 w-full border-2 border-gray-50 p-2 hover:bg-gray-50 hover:text-gray-350 bg-gray-350 duration-150 rounded-none"
           />
-        </form> */}
+        </form>
       </div>
     </section>
   )

@@ -6,7 +6,9 @@ module.exports = {
   darkMode: false,
   theme: {
     minHeight: {
-      live: '530px',
+      live: '540px',
+      video: '90vh',
+      about: '60vh',
     },
     maxHeight: {
       img: '500px',
@@ -14,6 +16,9 @@ module.exports = {
     extend: {
       transitionProperty: {
         height: 'height',
+      },
+      screens: {
+        '3xl': '1600px',
       },
       colors: {
         gray: {
@@ -39,23 +44,45 @@ module.exports = {
       inset: {
         lg: '10vw',
         xl: '25vw',
+        ot: '62px',
+        ol: '67px',
+        uvt: '51px',
+        uvl: '90px',
+        et: '49px',
+        el: '135px',
+        nt: '45px',
+        nl: '159px',
+        it: '40px',
+        il: '188px',
+        itt: '26px',
+        itl: '190px',
+        rt: '35px',
+        rl: '195px',
       },
       backgroundSize: {
         110: '110%',
         130: '130%',
+        140: '140%',
         150: '150%',
         180: '180%',
         200: '200%',
         220: '220%',
         250: '250%',
         260: '260%',
+        300: '300%',
       },
       animation: {
+        scroll: 'scroll 2s infinite',
         fadeH: 'fadeH .5s',
         fadeL: 'fadeL .5s',
         fadeR: 'fadeR 1s',
       },
       keyframes: {
+        scroll: {
+          '0%': { transform: 'translateY(-5rem)', opacity: 0 },
+          '50%': { opacity: 1 },
+          '100%': { transform: 'translateY(5rem)', opacity: 0 },
+        },
         fadeH: {
           '0%': { height: '100%' },
           '50%': { height: 0 },
@@ -72,29 +99,35 @@ module.exports = {
         },
       },
       backgroundImage: (theme) => ({
+        'hero-pattern-sp': "url('/hero02_sp.jpg')",
+        'hero-pattern-xl': "url('/hero02_xl.jpg')",
         'hero-pattern': "url('/hero02.jpg')",
       }),
     },
   },
   variants: {
-    variants: {
-      height: ['responsive', 'hover', 'focus'],
-    },
     extend: {
+      height: ['responsive', 'hover', 'focus'],
       scale: ['hover'],
       animation: ['hover'],
+      boxShadow: ['responsive'],
     },
   },
   plugins: [
     function ({ addUtilities }) {
       const newUtilities = {
+        '.wrap-big': {
+          width: '1000px',
+          padding: '5rem 5rem 7rem',
+          margin: '0 auto',
+        },
         '.wrap': {
           width: '100%',
           padding: '5rem 5rem 7rem',
         },
         '.wrap-sp': {
           width: '100%',
-          padding: '1.5rem 1.5rem 2rem',
+          padding: '3rem 1.5rem 4rem',
         },
         '.text-shadow': {
           textShadow: '0px 0px 20px rgba(0,0,0,1)',
@@ -103,11 +136,12 @@ module.exports = {
           boxShadow: '0px 0px 7px rgba(0,0,0,.2)',
         },
         '.title': {
-          fontSize: '4rem',
+          fontSize: '2.5rem',
           fontWeight: '200',
           letterSpacing: '0.025rem',
           lineHeight: '1',
-          marginBottom: '1.5rem',
+          marginBottom: '3rem',
+          textAlign: 'center',
         },
         '.andmore-position': {
           position: 'absolute',

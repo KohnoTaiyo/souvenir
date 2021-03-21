@@ -1,13 +1,12 @@
 const sgMail = require('@sendgrid/mail')
 
-export default async function (req, res) {
+export default async function (req) {
   sgMail.setApiKey(process.env.NEXT_PUBLIC_MAIL_KEY)
-
   const { message } = req.body
 
   const content = {
-    to: 'taiyowork66@gmail.com',
-    from: 'taiyowork66@gmail.com',
+    to: process.env.NEXT_PUBLIC_MAIL_NAME,
+    from: process.env.NEXT_PUBLIC_MAIL_NAME,
     subject: `HPから${message.inquire}が届きました`,
     html: `
     <p>内容：${message.inquire}</p>
@@ -17,8 +16,5 @@ export default async function (req, res) {
     <br>
     <p>${message.text}</p>`,
   }
-  sgMail
-    .send(content)
-    .then(() => console.log(content))
-    .catch(() => console.log('error'))
+  await sgMail.send(content)
 }

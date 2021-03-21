@@ -99,7 +99,7 @@ const Header = () => {
         }`}>
         <nav className="md:mt-hn list-none text-xl leading-10 font-light -ml-1">
           <NavList
-            color={scrollSizeChange.list}
+            color={router.pathname === '/' ? scrollSizeChange.list : '350'}
             hover={'hover:bg-black hover:bg-opacity-20'}
           />
         </nav>
@@ -137,7 +137,7 @@ const Header = () => {
           className={`w-14 h-0.5 bg-gray-${
             scrollSizeChange.top
           } duration-150 mt-3 transform ${
-            move ? '-rotate-45 -mt-0' : 'rotate-0 mt-3'
+            move ? '-rotate-45 -mt-0.5' : 'rotate-0 mt-3'
           } ${
             router.pathname !== '/' ? 'bg-gray-' + livePageColor : ''
           }`}></div>
@@ -179,19 +179,20 @@ const Header = () => {
         <div
           className="w-full md:w-1/3 list-none text-gray-50 absolute right-0 bg-gray-350 h-screen text-3xl font-light"
           style={{ lineHeight: 2 }}>
-          <div className=" w-4/5 mx-auto h-screen">
-            <div className="h-1/3 w-full"></div>
-            <div className="border-b border-gray-50 pb-3">
-              <NavList
-                color={'50'}
-                hover={''}
-                clickEvent={() => changeMove(false)}
-              />
-            </div>
-            <div className="flex justify-between w-full mt-6">
-              <Logo className="fill-current w-20 text-gray-50 h-12" />
-              <div className="w-36 mt-1.5">
-                <Icons color={'50'} />
+          <div className="w-4/5 mx-auto h-screen flex justify-center items-center">
+            <div>
+              <div className="border-b border-gray-50 pb-3 w-72">
+                <NavList
+                  color={'50'}
+                  hover={''}
+                  clickEvent={() => changeMove(false)}
+                />
+              </div>
+              <div className="flex justify-between w-full mt-6">
+                <Logo className="fill-current w-20 text-gray-50 h-12" />
+                <div className="w-36 mt-1.5">
+                  <Icons color={'50'} />
+                </div>
               </div>
             </div>
           </div>
