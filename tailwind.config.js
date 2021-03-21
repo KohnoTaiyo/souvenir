@@ -6,7 +6,7 @@ module.exports = {
   darkMode: false,
   theme: {
     minHeight: {
-      live: '530px',
+      live: '540px',
       video: '90vh',
       about: '60vh',
     },
@@ -72,11 +72,17 @@ module.exports = {
         300: '300%',
       },
       animation: {
+        scroll: 'scroll 2s infinite',
         fadeH: 'fadeH .5s',
         fadeL: 'fadeL .5s',
         fadeR: 'fadeR 1s',
       },
       keyframes: {
+        scroll: {
+          '0%': { transform: 'translateY(-5rem)', opacity: 0 },
+          '50%': { opacity: 1 },
+          '100%': { transform: 'translateY(5rem)', opacity: 0 },
+        },
         fadeH: {
           '0%': { height: '100%' },
           '50%': { height: 0 },
@@ -111,7 +117,7 @@ module.exports = {
     function ({ addUtilities }) {
       const newUtilities = {
         '.wrap-big': {
-          width: '1200px',
+          width: '1000px',
           padding: '5rem 5rem 7rem',
           margin: '0 auto',
         },
