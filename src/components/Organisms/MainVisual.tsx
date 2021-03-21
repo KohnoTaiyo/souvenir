@@ -10,7 +10,7 @@ const MainVisual = () => {
   }, [width])
 
   return (
-    <div id="top" className="relative w-screen h-screen z-0">
+    <div id="top" className="relative w-full h-screen z-0">
       <Image
         layout="fill"
         className="object-cover bg-center"
