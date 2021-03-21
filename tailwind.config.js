@@ -17,7 +17,7 @@ module.exports = {
         height: 'height',
       },
       screens: {
-        '3xl': '2000px',
+        '3xl': '1800px',
       },
       colors: {
         gray: {
@@ -106,6 +106,11 @@ module.exports = {
   plugins: [
     function ({ addUtilities }) {
       const newUtilities = {
+        '.wrap-big': {
+          width: '1200px',
+          padding: '5rem 5rem 7rem',
+          margin: '0 auto',
+        },
         '.wrap': {
           width: '100%',
           padding: '5rem 5rem 7rem',

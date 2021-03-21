@@ -55,8 +55,8 @@ const LiveContents = () => {
   return (
     <section
       id="live"
-      className="bg-gray-350 font-light min-h-screen sm:min-h-0">
-      <div className="wrap-sp md:wrap lg:pl-80">
+      className="bg-gray-350 font-light min-h-screen sm:min-h-0 lg:pl-60">
+      <div className="2xl:wrap-big wrap-sp md:wrap">
         <h2 className="title text-gray-50 lg:text-left lg:text-6xl">Live</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-8 text-xl leading-5 text-gray-50">
           <div

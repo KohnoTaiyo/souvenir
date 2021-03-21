@@ -137,7 +137,7 @@ const Header = () => {
           className={`w-14 h-0.5 bg-gray-${
             scrollSizeChange.top
           } duration-150 mt-3 transform ${
-            move ? '-rotate-45 -mt-0' : 'rotate-0 mt-3'
+            move ? '-rotate-45 -mt-0.5' : 'rotate-0 mt-3'
           } ${
             router.pathname !== '/' ? 'bg-gray-' + livePageColor : ''
           }`}></div>

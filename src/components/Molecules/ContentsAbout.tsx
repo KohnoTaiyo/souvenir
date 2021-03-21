@@ -26,19 +26,21 @@ const ContentsAbout = () => {
     <section id="about" className="min-h-screen sm:min-h-0 bg-gray-50">
       <div
         id="hero02"
-        className="md:wrap wrap-sp w-screen bg-hero-pattern-sp 3xl:bg-hero-pattern font-light text-xl text-gray-50 bg-center bg-no-repeat object-cover lg:pl-80 bg-250 lg:bg-200 xl:bg-150 2xl:bg-130">
-        <h2 className="title text-shadow h-60 md:h-ha lg:text-left lg:text-6xl">
+        className="w-full bg-hero-pattern-sp 3xl:bg-hero-pattern font-light text-xl text-gray-50 bg-center bg-no-repeat object-cover lg:pl-60 bg-250 lg:bg-200 xl:bg-150 2xl:bg-130">
+        <h2 className="2xl:wrap-big md:wrap wrap-sp title text-shadow h-96 md:h-ha lg:text-left lg:text-6xl">
           About
         </h2>
       </div>
-      <div className="md:wrap wrap-sp text-gray-350 bg-gray-50 lg:pl-80">
-        <p>杉山悠佑　Guitar,Vocal（L）</p>
-        <p>近藤空良　Bass（R）</p>
-        <p className="mt-10">
-          千葉
-          <br />
-          Alternative Rock
-        </p>
+      <div className="lg:pl-60">
+        <div className="xl:wrap-big md:wrap wrap-sp text-gray-350 bg-gray-50">
+          <p>杉山悠佑　Guitar,Vocal（L）</p>
+          <p>近藤空良　Bass（R）</p>
+          <p className="mt-10">
+            千葉
+            <br />
+            Alternative Rock
+          </p>
+        </div>
       </div>
     </section>
   )
