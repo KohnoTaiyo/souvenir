@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Layout from '../components/Templates/Layout'
 import { Article } from '../interfaces'
 import { defaultData } from '../../utils/defaultData'
+import Image from 'next/image'
 
 const LivePage = () => {
   const [allLives, setAllLives] = useState(defaultData)
@@ -52,7 +53,7 @@ const LivePage = () => {
           {allLives.map((val: Article) => (
             <div
               key={val['id']}
-              className={`box-shadow mt-8 py-4 px-5 transform hover:scale-100 lg:hover:scale-105 duration-300 cursor-pointer lg:hover:shadow-2xl`}>
+              className={`box-shadow mt-8 py-4 px-5 transform hover:scale-100 lg:hover:scale-105  duration-300 cursor-pointer lg:hover:shadow-2xl`}>
               <div onClick={openEvent}>
                 {val['date']}
                 <br />
@@ -61,8 +62,11 @@ const LivePage = () => {
               <div
                 className={`block lg:flex justify-between h-0 opacity-0 duration-500 text-gray-50 invisible`}>
                 <div className="w-full mb-4 block lg:hidden">
-                  <img
+                  <Image
+                    layout="responsive"
                     src={val.image.url}
+                    width={val.image.width}
+                    height={val.image.height}
                     alt="ライブ情報"
                     className={`max-h-img m-auto`}
                   />
@@ -80,8 +84,11 @@ const LivePage = () => {
                   <p>Guest : {val['guest']}</p>
                 </div>
                 <div className="w-1/2 ml-2 hidden lg:block">
-                  <img
+                  <Image
+                    layout="responsive"
                     src={val.image.url}
+                    width={val.image.width}
+                    height={val.image.height}
                     alt="ライブ情報"
                     className={`max-h-img m-auto`}
                   />

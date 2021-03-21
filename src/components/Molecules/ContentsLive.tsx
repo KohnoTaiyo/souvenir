@@ -2,8 +2,11 @@ import React, { useState, useEffect } from 'react'
 import { Article } from '../../interfaces'
 import { defaultData } from '../../../utils/defaultData'
 import Link from 'next/link'
+import Image from 'next/image'
+import { GetStaticProps } from 'next'
 
-const LiveContents = () => {
+const LiveContents = ({ live }: any) => {
+  console.log(live)
   const [articlesData, setArticlesData] = useState(defaultData)
   const [activeLive, setActiveLive] = useState(articlesData[0])
   const [isActive, setIsActive] = useState(0)
@@ -56,7 +59,7 @@ const LiveContents = () => {
     <section
       id="live"
       className="bg-gray-350 font-light min-h-screen sm:min-h-0 lg:pl-60">
-      <div className="2xl:wrap-big wrap-sp md:wrap">
+      <div className="xl:wrap-big wrap-sp md:wrap">
         <h2 className="title text-gray-50 lg:text-left lg:text-6xl">Live</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-8 text-xl leading-5 text-gray-50">
           <div
@@ -90,8 +93,11 @@ const LiveContents = () => {
               </p>
             </div>
             <div className="hidden md:block w-7/12">
-              <img
+              <Image
+                layout="responsive"
                 src={activeLive.image.url}
+                width={activeLive.image.width}
+                height={activeLive.image.height}
                 alt="ライブ情報"
                 className={`bg-gray-350 ease-out duration-700 max-h-img m-auto ${
                   update ? 'animate-fadeR' : ''
@@ -136,3 +142,26 @@ const LiveContents = () => {
 }
 
 export default LiveContents
+
+export const getStaticProps: GetStaticProps = async () => {
+  const key: any = {
+    headers: { 'X-API-KEY': process.env.NEXT_PUBLIC_API_KEY },
+  }
+  const compare = (a: Article, b: Article) => {
+    let r = 0
+    a.date < b.date ? (r = 1) : (r = -1)
+    return r
+  }
+  const fetchDate = await fetch(
+    'https://taiyo.microcms.io/api/v1/live?limit=25',
+    key
+  )
+    .then((res) => res.json())
+    .then((res) => res.contents)
+  const sortData = fetchDate.sort(compare).slice(0, 5)
+  return {
+    props: {
+      live: sortData,
+    },
+  }
+}

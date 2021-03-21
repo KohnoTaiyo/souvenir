@@ -26,7 +26,7 @@ const ContentsContact = () => {
     <section
       id="contact"
       className="bg-gray-350 font-light min-h-screen sm:min-h-0 lg:pl-60">
-      <div className="2xl:wrap-big md:wrap wrap-sp">
+      <div className="xl:wrap-big md:wrap wrap-sp">
         <h2 className="title text-gray-50 lg:text-left lg:text-6xl">Contact</h2>
         <form onSubmit={handleSubmit(onSubmit)} className="text-gray-50">
           <label className="block mb-1 text-lg">

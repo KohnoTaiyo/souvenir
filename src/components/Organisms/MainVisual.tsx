@@ -21,9 +21,9 @@ const MainVisual = () => {
         priority={true}
         alt="Souvenir official website"
       />
-      <div className="absolute z-50 bottom-5 -right-8 flex">
-        <Scroll className="animate-scroll mr-1" />
-        <p className="text-gray-50 transform -rotate-90 text-sm font-light">
+      <div className="absolute z-50 top-1/2 translate-x-1/2 -right-2 flex">
+        <Scroll className="animate-scroll -mr-6 sm:-mr-2.5" />
+        <p className="text-gray-50 transform -rotate-90 text-sm font-light h-3 -mr-2 sm:mr-0.5">
           SCROLL
         </p>
       </div>
