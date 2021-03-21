@@ -99,7 +99,7 @@ const Header = () => {
         }`}>
         <nav className="md:mt-hn list-none text-xl leading-10 font-light -ml-1">
           <NavList
-            color={scrollSizeChange.list}
+            color={router.pathname === '/' ? scrollSizeChange.list : '350'}
             hover={'hover:bg-black hover:bg-opacity-20'}
           />
         </nav>

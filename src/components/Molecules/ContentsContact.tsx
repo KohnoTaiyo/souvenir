@@ -69,7 +69,7 @@ const ContentsContact = () => {
             type="text"
             name="name"
             placeholder="杉山 悠佑"
-            className="text-gray-900 w-full p-1 focus:outline-none"
+            className="text-gray-900 w-full p-1 focus:outline-none rounded-none"
             autoComplete="name"
             ref={register({
               required: 'お名前が入力されていません',
@@ -90,7 +90,7 @@ const ContentsContact = () => {
             type="text"
             name="kana"
             placeholder="スギヤマ ユウスケ"
-            className="text-gray-900 w-full p-1 focus:outline-none"
+            className="text-gray-900 w-full p-1 focus:outline-none rounded-none"
             autoComplete="name"
             ref={register({
               required: 'お名前が入力されていません',
@@ -111,7 +111,7 @@ const ContentsContact = () => {
             type="text"
             name="email"
             placeholder="souvenir@souvenir.com"
-            className="text-gray-900 w-full p-1 focus:outline-none"
+            className="text-gray-900 w-full p-1 focus:outline-none rounded-none"
             autoComplete="email"
             inputMode="url"
             ref={register({
@@ -136,7 +136,7 @@ const ContentsContact = () => {
           <textarea
             name="text"
             placeholder="予約名(フリガナ)、予約日、チケット枚数など"
-            className="text-gray-900 w-full p-1 h-60 min-h-full focus:outline-none"
+            className="text-gray-900 w-full p-1 h-60 min-h-full focus:outline-none rounded-none"
             ref={register({
               required: 'お問い合わせ内容が入力されていません',
               maxLength: {
@@ -152,7 +152,7 @@ const ContentsContact = () => {
           <input
             type="submit"
             value="送信する"
-            className="mt-5 w-full border-2 border-gray-50 p-2 hover:bg-gray-50 hover:text-gray-350 bg-gray-350 duration-150"
+            className="mt-5 w-full border-2 border-gray-50 p-2 hover:bg-gray-50 hover:text-gray-350 bg-gray-350 duration-150 rounded-none"
           />
         </form>
       </div>

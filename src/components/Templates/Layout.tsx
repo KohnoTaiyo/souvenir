@@ -15,6 +15,13 @@ const Layout = ({ children, title = 'Souvenir' }: Props) => (
     style={{ minHeight: '100vh' }}>
     <Head>
       <title>{title}</title>
+      <link rel="icon" href="/favicons/favicon.ico" />
+      <link
+        rel="apple-touch-icon"
+        sizes="180x180"
+        href="/favicons/apple-touch-icon-180x180.png"
+      />
+      <link rel="icon" type="image/png" href="/favicons/icon-192x192.png" />
       <meta charSet="utf-8" />
       <meta
         name="description"

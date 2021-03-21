@@ -1,35 +1,23 @@
-import React, { useEffect, useState } from 'react'
-import S from '../../../public/animattion_logo/s.svg'
-import O from '../../../public/animattion_logo/o.svg'
-import UV from '../../../public/animattion_logo/uv.svg'
-import E from '../../../public/animattion_logo/e.svg'
-import N from '../../../public/animattion_logo/n.svg'
-import I from '../../../public/animattion_logo/i.svg'
-import Itop from '../../../public/animattion_logo/i_top.svg'
-import R from '../../../public/animattion_logo/r.svg'
+import React from 'react'
+import S from '../../../public/animattion_logo/s_ani.svg'
+import O from '../../../public/animattion_logo/o_ani.svg'
+import UV from '../../../public/animattion_logo/uv_ani.svg'
+import E from '../../../public/animattion_logo/e_ani.svg'
+import N from '../../../public/animattion_logo/n_ani.svg'
+import I from '../../../public/animattion_logo/i_ani.svg'
+import Itop from '../../../public/animattion_logo/i_top_ani.svg'
+import R from '../../../public/animattion_logo/r_ani.svg'
 
-const LoadAnimation = () => {
-  const [count, setCount] = useState(0)
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCount((pre) => pre + 1)
-    }, 50)
-    window.onload = () => {
-      setInterval(() => clearInterval(timer), 10000)
-    }
-  }, [])
-
-  return (
-    <div className="relative w-60 h-60">
-      {count > 10 ? <S className="absolute top-0 left-0" /> : ''}
-      {count > 25 ? <O className="absolute top-ot left-ol" /> : ''}
-      {count > 35 ? <UV className="absolute top-uvt left-uvl" /> : ''}
-      {count > 50 ? <E className="absolute top-et left-el" /> : ''}
-      {count > 60 ? <N className="absolute top-nt left-nl" /> : ''}
-      {count > 68 ? <I className="absolute top-it left-il" /> : ''}
-      {count > 71 ? <Itop className="absolute top-itt left-itl" /> : ''}
-      {count > 74 ? <R className="absolute top-rt left-rl" /> : ''}
-    </div>
-  )
-}
+const LoadAnimation = () => (
+  <div className="relative w-60 h-44">
+    <S className="absolute top-0 left-0" />
+    <O className="absolute top-ot left-ol" />
+    <UV className="absolute top-uvt left-uvl" />
+    <E className="absolute top-et left-el" />
+    <N className="absolute top-nt left-nl" />
+    <I className="absolute top-it left-il" />
+    <Itop className="absolute top-itt left-itl" />
+    <R className="absolute top-rt left-rl" />
+  </div>
+)
 export default LoadAnimation

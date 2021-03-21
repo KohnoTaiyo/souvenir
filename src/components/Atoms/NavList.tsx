@@ -28,7 +28,7 @@ const NavList = (props: Hover) => {
             <Link href={'/#' + val.toLowerCase()}>
               <span
                 onClick={props.clickEvent}
-                className={`${props.hover} text-gray-350 px-1 duration-150 cursor-pointer`}>
+                className={`${props.hover} text-gray-${props.color} px-1 duration-150 cursor-pointer`}>
                 {val}
               </span>
             </Link>
