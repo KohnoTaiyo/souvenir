@@ -8,6 +8,7 @@ module.exports = {
     minHeight: {
       live: '530px',
       video: '90vh',
+      about: '60vh',
     },
     maxHeight: {
       img: '500px',
@@ -17,7 +18,7 @@ module.exports = {
         height: 'height',
       },
       screens: {
-        '3xl': '1800px',
+        '3xl': '1600px',
       },
       colors: {
         gray: {
@@ -61,12 +62,14 @@ module.exports = {
       backgroundSize: {
         110: '110%',
         130: '130%',
+        140: '140%',
         150: '150%',
         180: '180%',
         200: '200%',
         220: '220%',
         250: '250%',
         260: '260%',
+        300: '300%',
       },
       animation: {
         fadeH: 'fadeH .5s',
@@ -91,6 +94,7 @@ module.exports = {
       },
       backgroundImage: (theme) => ({
         'hero-pattern-sp': "url('/hero02_sp.jpg')",
+        'hero-pattern-xl': "url('/hero02_xl.jpg')",
         'hero-pattern': "url('/hero02.jpg')",
       }),
     },
