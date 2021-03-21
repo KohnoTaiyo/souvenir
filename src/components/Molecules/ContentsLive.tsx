@@ -1,56 +1,56 @@
-import React, { useState, useEffect } from 'react'
-import { Article } from '../../interfaces'
-import { defaultData } from '../../../utils/defaultData'
-import Link from 'next/link'
+import React from 'react'
+// import { Article } from '../../interfaces'
+// import { defaultData } from '../../../utils/defaultData'
+// import Link from 'next/link'
 
 const LiveContents = () => {
-  const [articlesData, setArticlesData] = useState(defaultData)
-  const [activeLive, setActiveLive] = useState(articlesData[0])
-  const [isActive, setIsActive] = useState(0)
-  const [update, setUpdate] = useState(false)
-  const [isMouseHover, setIsMouseHover] = useState(false)
-  const articles = () => {
-    if (articlesData.slice(0, 5).length === 3) {
-      return articlesData.slice(0, 2)
-    }
-    return articlesData.slice(0, 5)
-  }
-  const totalArticles = () => {
-    if (articles().length === 2 || articles().length === 5) {
-      return true
-    }
-    return false
-  }
+  // const [articlesData, setArticlesData] = useState(defaultData)
+  // const [activeLive, setActiveLive] = useState(articlesData[0])
+  // const [isActive, setIsActive] = useState(0)
+  // const [update, setUpdate] = useState(false)
+  // const [isMouseHover, setIsMouseHover] = useState(false)
+  // const articles = () => {
+  //   if (articlesData.slice(0, 5).length === 3) {
+  //     return articlesData.slice(0, 2)
+  //   }
+  //   return articlesData.slice(0, 5)
+  // }
+  // const totalArticles = () => {
+  //   if (articles().length === 2 || articles().length === 5) {
+  //     return true
+  //   }
+  //   return false
+  // }
 
-  useEffect(() => {
-    let unmounted = false
+  // useEffect(() => {
+  //   let unmounted = false
 
-    const key: any = {
-      headers: { 'X-API-KEY': process.env.NEXT_PUBLIC_API_KEY },
-    }
-    const compare = (a: Article, b: Article) => {
-      let r = 0
-      a.date < b.date ? (r = 1) : (r = -1)
-      return r
-    }
-    ;(async () => {
-      if (!unmounted) {
-        const fetchDate = await fetch(
-          'https://taiyo.microcms.io/api/v1/live?limit=25',
-          key
-        )
-          .then((res) => res.json())
-          .then((res) => res.contents)
-        const sortData = fetchDate.sort(compare).slice(0, 5)
-        setArticlesData(sortData)
-        setActiveLive(sortData[0])
-      }
-    })()
+  //   const key: any = {
+  //     headers: { 'X-API-KEY': process.env.NEXT_PUBLIC_API_KEY },
+  //   }
+  //   const compare = (a: Article, b: Article) => {
+  //     let r = 0
+  //     a.date < b.date ? (r = 1) : (r = -1)
+  //     return r
+  //   }
+  //   ;(async () => {
+  //     if (!unmounted) {
+  //       const fetchDate = await fetch(
+  //         'https://taiyo.microcms.io/api/v1/live?limit=25',
+  //         key
+  //       )
+  //         .then((res) => res.json())
+  //         .then((res) => res.contents)
+  //       const sortData = fetchDate.sort(compare).slice(0, 5)
+  //       setArticlesData(sortData)
+  //       setActiveLive(sortData[0])
+  //     }
+  //   })()
 
-    return () => {
-      unmounted = true
-    }
-  }, [])
+  //   return () => {
+  //     unmounted = true
+  //   }
+  // }, [])
 
   return (
     <section
@@ -58,7 +58,8 @@ const LiveContents = () => {
       className="bg-gray-350 font-light min-h-screen sm:min-h-0">
       <div className="wrap-sp md:wrap lg:pl-80">
         <h2 className="title text-gray-50">Live</h2>
-        <div className="grid grid-cols-3 gap-x-6 gap-y-8 text-xl leading-5 text-gray-50">
+        <div className="text-gray-50">Coming Soon...</div>
+        {/* <div className="grid grid-cols-3 gap-x-6 gap-y-8 text-xl leading-5 text-gray-50">
           <div
             className={`flex col-span-3 overflow-hidden min-h-live leading-6 ${
               update ? 'animate-fadeH' : ''
@@ -129,7 +130,7 @@ const LiveContents = () => {
                 }`}></span>
             </div>
           </Link>
-        </div>
+        </div> */}
       </div>
     </section>
   )
