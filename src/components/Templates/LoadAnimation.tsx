@@ -11,10 +11,10 @@ import R from '../../../public/animattion_logo/r.svg'
 const LoadAnimation = () => {
   const [count, setCount] = useState(0)
   useEffect(() => {
+    const timer = setInterval(() => {
+      setCount((pre) => pre + 1)
+    }, 50)
     window.onload = () => {
-      const timer = setInterval(() => {
-        setCount((pre) => pre + 1)
-      }, 50)
       setInterval(() => clearInterval(timer), 10000)
     }
   }, [])

@@ -9,13 +9,13 @@ import LoadAnimation from '../components/Templates/LoadAnimation'
 
 const IndexPage = () => {
   const [isFirst, setIsFirst] = useState(true)
-  setTimeout(() => setIsFirst(false), 5000)
+  // setTimeout(() => setIsFirst(false), 5000)
 
   return (
     <>
       <div
         className={`w-screen h-screen bg-gray-50 z-50 fixed top-0 left-0 flex justify-center items-center duration-500 ${
-          isFirst ? '' : 'invisible opacity-0 h-0'
+          isFirst ? 'visible opacity-100' : 'invisible opacity-0 h-0'
         }`}>
         <LoadAnimation />
       </div>
