@@ -9,7 +9,7 @@ import LoadAnimation from '../components/Templates/LoadAnimation'
 
 const IndexPage = () => {
   const [isFirst, setIsFirst] = useState(true)
-  // setTimeout(() => setIsFirst(false), 5000)
+  setTimeout(() => setIsFirst(false), 5000)
 
   return (
     <>
