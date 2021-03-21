@@ -34,7 +34,7 @@ const Layout = ({ children, title = 'Souvenir' }: Props) => (
       <meta property="og:url" content="https://souvenir-official.vercel.app/" />
       <meta
         property="og:image"
-        content="https://souvenir-official.vercel.app/assets/ogp.jpg"
+        content="https://souvenir-official.vercel.app/ogp.jpg"
       />
       <meta property="og:site_name" content="Souvenir official website" />
       <meta

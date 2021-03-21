@@ -17,9 +17,6 @@ const ContentsAbout = () => {
 
   useEffect(() => {
     document.addEventListener('scroll', isScrollToggle, { passive: true })
-    return () => {
-      document.removeEventListener('scroll', isScrollToggle)
-    }
   }, [])
 
   return (
