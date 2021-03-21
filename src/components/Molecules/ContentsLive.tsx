@@ -3,10 +3,8 @@ import { Article } from '../../interfaces'
 import { defaultData } from '../../../utils/defaultData'
 import Link from 'next/link'
 import Image from 'next/image'
-import { GetStaticProps } from 'next'
 
-const LiveContents = ({ live }: any) => {
-  console.log(live)
+const LiveContents = () => {
   const [articlesData, setArticlesData] = useState(defaultData)
   const [activeLive, setActiveLive] = useState(articlesData[0])
   const [isActive, setIsActive] = useState(0)
@@ -28,8 +26,8 @@ const LiveContents = ({ live }: any) => {
   useEffect(() => {
     let unmounted = false
 
-    const key: any = {
-      headers: { 'X-API-KEY': process.env.NEXT_PUBLIC_API_KEY },
+    const key = {
+      headers: { 'X-API-KEY': process.env.NEXT_PUBLIC_API_KEY ?? '' },
     }
     const compare = (a: Article, b: Article) => {
       let r = 0
@@ -39,7 +37,7 @@ const LiveContents = ({ live }: any) => {
     ;(async () => {
       if (!unmounted) {
         const fetchDate = await fetch(
-          'https://taiyo.microcms.io/api/v1/live?limit=25',
+          'https://souvenir.microcms.io/api/v1/live?limit=25',
           key
         )
           .then((res) => res.json())
@@ -142,26 +140,3 @@ const LiveContents = ({ live }: any) => {
 }
 
 export default LiveContents
-
-export const getStaticProps: GetStaticProps = async () => {
-  const key: any = {
-    headers: { 'X-API-KEY': process.env.NEXT_PUBLIC_API_KEY },
-  }
-  const compare = (a: Article, b: Article) => {
-    let r = 0
-    a.date < b.date ? (r = 1) : (r = -1)
-    return r
-  }
-  const fetchDate = await fetch(
-    'https://taiyo.microcms.io/api/v1/live?limit=25',
-    key
-  )
-    .then((res) => res.json())
-    .then((res) => res.contents)
-  const sortData = fetchDate.sort(compare).slice(0, 5)
-  return {
-    props: {
-      live: sortData,
-    },
-  }
-}

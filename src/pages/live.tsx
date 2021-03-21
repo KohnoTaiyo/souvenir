@@ -21,7 +21,7 @@ const LivePage = () => {
     ;(async () => {
       if (!unmounted) {
         const fetchDate = await fetch(
-          'https://taiyo.microcms.io/api/v1/live?limit=25',
+          'https://souvenir.microcms.io/api/v1/live?limit=25',
           key
         )
           .then((res) => res.json())
