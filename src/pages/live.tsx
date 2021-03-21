@@ -46,8 +46,8 @@ const LivePage = () => {
 
   return (
     <Layout title="All Live | Souvenir">
-      <section className="bg-gray-50 font-light text-gray-350">
-        <div className="wrap-sp md:wrap lg:pl-80">
+      <section className="bg-gray-50 font-light text-gray-350 lg:pl-60">
+        <div className="2xl:wrap-big wrap-sp md:wrap">
           <h2 className="title lg:text-left lg:text-6xl">All Live</h2>
           {allLives.map((val: Article) => (
             <div
