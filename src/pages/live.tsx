@@ -1,41 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import Layout from '../components/Templates/Layout'
 import { Article } from '../interfaces'
-import { defaultData } from '../../utils/defaultData'
 import Image from 'next/image'
+import { GetStaticProps } from 'next'
 
-const LivePage = () => {
-  const [allLives, setAllLives] = useState(defaultData)
+type StaticArticle = {
+  liveDatas: Article[]
+}
 
-  useEffect(() => {
-    let unmounted = false
-
-    const key: any = {
-      headers: { 'X-API-KEY': process.env.NEXT_PUBLIC_API_KEY },
-    }
-    const compare = (a: Article, b: Article) => {
-      let r = 0
-      a.date < b.date ? (r = 1) : (r = -1)
-      return r
-    }
-    ;(async () => {
-      if (!unmounted) {
-        const fetchDate = await fetch(
-          'https://souvenir.microcms.io/api/v1/live?limit=25',
-          key
-        )
-          .then((res) => res.json())
-          .then((res) => res.contents)
-        const sortData = fetchDate.sort(compare)
-        setAllLives(sortData)
-      }
-    })()
-
-    return () => {
-      unmounted = true
-    }
-  }, [])
-
+const LivePage = ({ liveDatas }: StaticArticle) => {
   const openEvent = (e: React.MouseEvent<HTMLElement>) => {
     ;(e.target as Element).nextElementSibling?.classList.toggle('h-full')
     ;(e.target as Element).nextElementSibling?.classList.toggle('opacity-100')
@@ -50,7 +23,7 @@ const LivePage = () => {
       <section className="bg-gray-50 font-light text-gray-350 lg:pl-60">
         <div className="2xl:wrap-big wrap-sp md:wrap">
           <h2 className="title lg:text-left lg:text-6xl">All Live</h2>
-          {allLives.map((val: Article) => (
+          {liveDatas.map((val: Article) => (
             <div
               key={val['id']}
               className={`box-shadow mt-8 py-4 px-5 transform hover:scale-100 lg:hover:scale-105  duration-300 cursor-pointer lg:hover:shadow-2xl`}>
@@ -103,3 +76,26 @@ const LivePage = () => {
 }
 
 export default LivePage
+
+export const getStaticProps: GetStaticProps = async () => {
+  const key = {
+    headers: { 'X-API-KEY': process.env.NEXT_PUBLIC_API_KEY ?? '' },
+  }
+  const compare = (a: Article, b: Article) => {
+    let r = 0
+    a.date < b.date ? (r = 1) : (r = -1)
+    return r
+  }
+  const fetchDate = await fetch(
+    'https://souvenir.microcms.io/api/v1/live?limit=25',
+    key
+  )
+    .then((res) => res.json())
+    .then((res) => res.contents)
+  const sortData = fetchDate.sort(compare)
+  return {
+    props: {
+      liveDatas: sortData,
+    },
+  }
+}
