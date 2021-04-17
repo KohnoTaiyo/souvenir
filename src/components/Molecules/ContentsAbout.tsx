@@ -1,7 +1,7 @@
-import React, { useEffect, useCallback } from 'react'
+import React, { useEffect } from 'react'
 
 const ContentsAbout = () => {
-  const isScrollToggle = useCallback(() => {
+  const isScrollToggle = () => {
     const scrollTop = window.pageYOffset
     const positionHero02 = document.getElementById('hero02')?.offsetTop
     const hero02 = document.getElementById('hero02')
@@ -13,13 +13,10 @@ const ContentsAbout = () => {
         )
       }
     }
-  }, [])
+  }
 
   useEffect(() => {
-    document.addEventListener('scroll', isScrollToggle, { passive: true })
-    return () => {
-      document.removeEventListener('scroll', isScrollToggle)
-    }
+    document.addEventListener('scroll', isScrollToggle)
   }, [])
 
   return (
