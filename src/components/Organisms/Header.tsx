@@ -154,7 +154,7 @@ const Header = () => {
           }}>
           <div className="w-wj m-auto mt-hj">
             <Link href="https://linkco.re/2esGYXNB">
-              <a target="_blank">
+              <a target="_blank" rel="noopener noreferrer">
                 <div
                   onMouseEnter={() => setIsMouseHover(true)}
                   onMouseLeave={() => setIsMouseHover(false)}
