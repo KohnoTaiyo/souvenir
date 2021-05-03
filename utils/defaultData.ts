@@ -2,7 +2,7 @@ import { Article } from '../src/interfaces'
 
 export const defaultData: Article[] = [
   {
-    id: 64167189907,
+    id: '64167189907',
     title: 'title',
     createdAt: '2021-02-28T04:09:04.954Z',
     updatedAt: '2021-02-28T04:09:04.954Z',

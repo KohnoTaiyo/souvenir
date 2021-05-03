@@ -11,17 +11,26 @@ type Color = {
 const Icons = (props: Color) => (
   <div className="flex justify-between">
     <Link href="https://twitter.com/Souvenircb">
-      <a target="_blank" className={`text-gray-${props.color} fill-current`}>
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`text-gray-${props.color} fill-current`}>
         <Twitter className="w-7 h-7 duration-150" />
       </a>
     </Link>
     <Link href="https://www.tunecore.co.jp/artists/Souvenir">
-      <a target="_blank" className={`text-gray-${props.color} fill-current`}>
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`text-gray-${props.color} fill-current`}>
         <Music className="w-7 h-7 duration-150" />
       </a>
     </Link>
     <Link href="https://youtube.com/channel/UCABvNkuhE_xZ0q30GVviahA">
-      <a target="_blank" className={`text-gray-${props.color} fill-current`}>
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`text-gray-${props.color} fill-current`}>
         <Youtube className="w-7 h-7 duration-150" />
       </a>
     </Link>

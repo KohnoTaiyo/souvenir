@@ -11,8 +11,10 @@ const ContentsVideo = () => (
       <div className="xl:wrap-big md:wrap wrap-sp">
         <div className="relative w-full h-0 pb-pm overflow-hidden">
           <iframe
+            loading="lazy"
             width="560"
             height="365"
+            title="movie"
             src="https://www.youtube.com/embed/aVtIfZG2a60?rel=0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; fullscreen; picture-in-picture"
             className="absolute w-full h-full top-0 left-0"></iframe>
