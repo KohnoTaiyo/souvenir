@@ -1,9 +1,13 @@
 # This is Souvenir web site
+知り合いのバンドのサイトをNext.jsで作成しました。
+https://souvenir-official.vercel.app/
 
-## Implementation completed
-
+## Technology used
+- TypeScript
+- Tailwind CSS
 - SSG
 
-## Future implementation
-
-- PWA
+## Service used
+- microCMS ヘッドレスCMSとして
+- SendGrid メールサービスとして
+- Vercel デプロイ先として
