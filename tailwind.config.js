@@ -1,4 +1,5 @@
 module.exports = {
+  mode: 'jit',
   purge: [
     './src/components/**/*.{js,ts,jsx,tsx}',
     './src/pages/**/*.{js,ts,jsx,tsx}',
@@ -59,18 +60,6 @@ module.exports = {
         rt: '35px',
         rl: '195px',
       },
-      backgroundSize: {
-        110: '110%',
-        130: '130%',
-        140: '140%',
-        150: '150%',
-        180: '180%',
-        200: '200%',
-        220: '220%',
-        250: '250%',
-        260: '260%',
-        300: '300%',
-      },
       animation: {
         scroll: 'scroll 2s infinite',
         fadeH: 'fadeH .5s',
@@ -98,11 +87,6 @@ module.exports = {
           '100%': { opacity: 1 },
         },
       },
-      backgroundImage: (theme) => ({
-        'hero-pattern-sp': "url('/hero02_sp.jpg')",
-        'hero-pattern-xl': "url('/hero02_xl.jpg')",
-        'hero-pattern': "url('/hero02.jpg')",
-      }),
     },
   },
   variants: {

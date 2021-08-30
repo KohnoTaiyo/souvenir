@@ -3,7 +3,6 @@ import Image from 'next/image'
 import Scroll from '../../../public/scroll.svg'
 
 const MainVisual = () => {
-  const BLAKE_POINT = 768
   const [width, setWidth] = useState<number>(0)
 
   useEffect(() => {
@@ -15,7 +14,7 @@ const MainVisual = () => {
       <Image
         layout="fill"
         className="object-cover bg-center"
-        src={width < BLAKE_POINT ? '/hero05.jpg' : '/hero.jpg'}
+        src="/hero.jpg"
         quality="100"
         loading="eager"
         priority={true}
