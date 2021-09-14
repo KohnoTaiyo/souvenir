@@ -115,7 +115,7 @@ const LiveContents = () => {
                 setTimeout(() => setUpdate(false), 500)
               }}
               key={val['id']}
-              className={`box-shadow py-4 px-5 hover:bg-gray-50 hover:text-gray-350 transform hover:scale-105 duration-300 cursor-pointer hover:shadow-2xl ${
+              className={`box-shadow border py-4 px-5 hover:bg-gray-50 hover:text-gray-350 transform hover:scale-105 duration-300 cursor-pointer hover:shadow-2xl ${
                 isActive === ind ? 'bg-gray-50 text-gray-350' : ''
               }`}>
               <div>{val['date']}</div>

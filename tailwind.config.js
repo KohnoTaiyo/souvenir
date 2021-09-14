@@ -23,7 +23,7 @@ module.exports = {
       },
       colors: {
         gray: {
-          350: '#afbab6',
+          350: '#2e2e2e',
         },
       },
       width: {

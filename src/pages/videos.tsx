@@ -8,7 +8,7 @@ const VideosPage = () => {
   const [isClickThumbnailAkuruuta, changeIsClickThumbnailAkuruuta] = useState<boolean>(false)
 
   return (
-    <Layout title="All Live | Souvenir">
+    <Layout title="All Videos | Souvenir">
       <section className="bg-gray-50 font-light text-gray-350 lg:pl-60">
         <div className="2xl:wrap-big wrap-sp md:wrap">
           <h2 className="title mt-10 lg:mt-0 lg:text-left lg:text-6xl">All Videos</h2>
