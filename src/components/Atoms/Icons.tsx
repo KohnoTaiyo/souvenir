@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Music from '../../../public/music.svg'
 import Twitter from '../../../public/twitter.svg'
 import Youtube from '../../../public/youtube.svg'
-import Instagram from '../../../public/instagram.svg'
+import Instagram from '../../../public/instagram_icon.svg'
 
 type Color = {
   color: string
