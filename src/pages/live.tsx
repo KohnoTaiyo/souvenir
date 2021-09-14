@@ -22,7 +22,7 @@ const LivePage = ({ liveDatas }: StaticArticle) => {
     <Layout title="All Live | Souvenir">
       <section className="bg-gray-50 font-light text-gray-350 lg:pl-60">
         <div className="2xl:wrap-big wrap-sp md:wrap">
-          <h2 className="title lg:text-left lg:text-6xl">All Live</h2>
+          <h2 className="title mt-10 lg:mt-0 lg:text-left lg:text-6xl">All Live</h2>
           {liveDatas.map((val: Article) => (
             <div
               key={val['id']}
