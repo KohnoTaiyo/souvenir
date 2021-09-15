@@ -23,11 +23,12 @@ module.exports = {
       },
       colors: {
         gray: {
-          350: '#afbab6',
+          350: '#2e2e2e',
         },
       },
       width: {
         wj: '30rem',
+        wt: '8%'
       },
       margin: {
         hn: '42vh',
@@ -134,6 +135,9 @@ module.exports = {
           bottom: '1.20rem',
           height: '1px',
         },
+        '.start-triangle': {
+          clipPath: 'polygon(0 0, 0% 100%, 100% 50%)'
+        }
       }
       addUtilities(newUtilities, ['responsive', 'hover'])
     },

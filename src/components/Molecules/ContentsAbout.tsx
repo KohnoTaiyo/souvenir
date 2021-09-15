@@ -4,7 +4,7 @@ import React from 'react'
 const ContentsAbout = () => {
 
   return (
-    <section id="about" className="min-h-screen sm:min-h-0 bg-gray-50 relative">
+    <section id="about" className="bg-gray-50 relative min-h-video">
       <Image src='/hero02.jpg' layout='responsive' width='100' height='67' />
       <div
         id="hero02"
@@ -13,7 +13,7 @@ const ContentsAbout = () => {
           About
         </h2>
       </div>
-      <div className="lg:pl-60 lg:mt-3">
+      <div className="lg:pl-60 mt-28 mb-24 lg:mt-3 lg:mb-0">
         <div className="xl:wrap-big md:wrap wrap-sp text-gray-350 bg-gray-50">
           <p>杉山悠佑　Guitar,Vocal</p>
           <p>近藤空良　Bass</p>

@@ -136,7 +136,7 @@ const ContentsContact = () => {
           <textarea
             name="text"
             placeholder="予約名(フリガナ)、予約日、チケット枚数など"
-            className="text-gray-900 w-full p-1 h-60 min-h-full focus:outline-none rounded-none"
+            className="text-gray-900 w-full p-1 h-32 min-h-full focus:outline-none rounded-none"
             ref={register({
               required: 'お問い合わせ内容が入力されていません',
               maxLength: {

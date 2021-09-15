@@ -62,7 +62,7 @@ const LiveContents = () => {
         <div className="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-8 text-xl leading-5 text-gray-50">
 
           <div
-            className={`block md:flex col-span-2 md:col-span-3 overflow-hidden min-h-live leading-6 ${
+            className={`block md:flex col-span-2 md:col-span-3 overflow-hidden md:min-h-live leading-6 ${
               update ? 'animate-fadeH' : ''
             }`}>
             <div className="w-full md:w-1/2 mr-5 ">
@@ -78,14 +78,16 @@ const LiveContents = () => {
               <p className={`mt-1.5 mb-4 ${update ? 'animate-fadeL' : ''}`}>
                 {activeLive.place}
               </p>
-              <p className="bg-gray-50 text-gray-350 py-1 px-1.5">Time</p>
-              <p className={`mt-1.5 mb-4 ${update ? 'animate-fadeL' : ''}`}>
-                {activeLive.time}
-              </p>
-              <p className="bg-gray-50 text-gray-350 py-1 px-1.5">Price</p>
-              <p className={`mt-1.5 mb-4 ${update ? 'animate-fadeL' : ''}`}>
-                {activeLive.price}
-              </p>
+              <div className="hidden md:block">
+                <p className="bg-gray-50 text-gray-350 py-1 px-1.5">Time</p>
+                <p className={`mt-1.5 mb-4 ${update ? 'animate-fadeL' : ''}`}>
+                  {activeLive.time}
+                </p>
+                <p className="bg-gray-50 text-gray-350 py-1 px-1.5">Price</p>
+                <p className={`mt-1.5 mb-4 ${update ? 'animate-fadeL' : ''}`}>
+                  {activeLive.price}
+                </p>
+              </div>
               <p className="bg-gray-50 text-gray-350 py-1 px-1.5">Guest</p>
               <p className={`mt-1.5 mb-4 ${update ? 'animate-fadeL' : ''}`}>
                 {activeLive.guest}
@@ -113,7 +115,7 @@ const LiveContents = () => {
                 setTimeout(() => setUpdate(false), 500)
               }}
               key={val['id']}
-              className={`box-shadow py-4 px-5 hover:bg-gray-50 hover:text-gray-350 transform hover:scale-105 duration-300 cursor-pointer hover:shadow-2xl ${
+              className={`box-shadow border py-4 px-5 hover:bg-gray-50 hover:text-gray-350 transform hover:scale-105 duration-300 cursor-pointer hover:shadow-2xl ${
                 isActive === ind ? 'bg-gray-50 text-gray-350' : ''
               }`}>
               <div>{val['date']}</div>
