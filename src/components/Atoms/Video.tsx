@@ -6,15 +6,16 @@ type Props = {
 
 const Video = (props: Props) => {
   return(
-    <iframe
-      loading="lazy"
-      width="560"
-      height="365"
-      title="movie"
-      src={props.url}
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; fullscreen; picture-in-picture"
-      className="absolute w-full h-full top-0 left-0">
-    </iframe>
+    <div className="relative w-full h-0 pb-pm overflow-hidden">
+      <iframe
+        loading="lazy"
+        width="560"
+        height="365"
+        title="movie"
+        src={`${props.url}?autoplay=1`}
+        className="absolute w-full h-full top-0 left-0">
+      </iframe>
+    </div>
   )
 }
 export default Video

@@ -130,9 +130,9 @@ module.exports = {
         },
         '.andmore-position': {
           position: 'absolute',
-          left: '8.5rem',
+          left: '7.5rem',
           right: '0',
-          bottom: '1.20rem',
+          bottom: '1.25rem',
           height: '1px',
         },
         '.start-triangle': {

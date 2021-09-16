@@ -18,9 +18,7 @@ const ContentsVideo = () => {
         <div className="xl:wrap-big md:wrap wrap-sp">
           <div className="bg-gray-350">
             {isClickThumbnail ?
-              <div className="relative w-full h-0 pb-pm overflow-hidden">
-                <Video url="https://youtu.be/8RJ28sZbTiI?rel=0" />
-              </div>
+              <Video url="https://www.youtube.com/embed/8RJ28sZbTiI" />
               :
               <div className="relative cursor-pointer" onClick={() => changeIsClickThumbnail(true)}>
                 <Image  width="840" height="475" src="/tabaninatte_thumbnail.jpg" layout="responsive" alt="束になって" />
@@ -33,7 +31,7 @@ const ContentsVideo = () => {
             <div
               onMouseEnter={() => setIsMouseHover(true)}
               onMouseLeave={() => setIsMouseHover(false)}
-              className="mt-8 text-xl text-gray-350 relative flex items-end py-4 px-5 border border-gray-350 hover:bg-gray-350 hover:text-gray-50 transform hover:scale-110 duration-300 cursor-pointer hover:shadow-2xl"
+              className="mt-8 text-gray-350 relative flex items-end py-4 px-5 border border-gray-350 hover:bg-gray-350 hover:text-gray-50 transform hover:scale-110 duration-300 cursor-pointer hover:shadow-2xl"
             >
               <div>AND MORE</div>
               <span
