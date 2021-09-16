@@ -21,6 +21,7 @@ const ContentsContact = () => {
     setVal('')
   }
   const [val, setVal] = useState('')
+  const [isMouseHover, setIsMouseHover] = useState<boolean>(false)
 
   return (
     <section
@@ -29,10 +30,10 @@ const ContentsContact = () => {
       <div className="xl:wrap-big md:wrap wrap-sp">
         <h2 className="title text-gray-50 lg:text-left lg:text-6xl">Contact</h2>
         <form onSubmit={handleSubmit(onSubmit)} className="text-gray-50">
-          <label className="block mb-1 text-lg">
+          <label className="block mb-1">
             お問い合わせ内容<span className="text-red-500">*</span>
           </label>
-          <label className="mr-2">
+          <label className="mr-2 text-sm">
             <input
               type="radio"
               value="チケット予約"
@@ -44,7 +45,7 @@ const ContentsContact = () => {
             />
             チケット予約
           </label>
-          <label>
+          <label className="text-sm">
             <input
               type="radio"
               value="お問い合わせ"
@@ -62,7 +63,7 @@ const ContentsContact = () => {
             {errors.inquire && errors.inquire.message}
           </p>
 
-          <label className="block mt-4 mb-1 text-lg">
+          <label className="block mt-4 mb-1">
             お名前(ニックネーム)<span className="text-red-400">*</span>
           </label>
           <input
@@ -83,7 +84,7 @@ const ContentsContact = () => {
             {errors.kana && errors.kana.message}
           </p>
 
-          <label className="block mt-4 mb-1 text-lg">
+          <label className="block mt-4 mb-1">
             フリガナ<span className="text-red-400">*</span>
           </label>
           <input
@@ -104,7 +105,7 @@ const ContentsContact = () => {
             {errors.name && errors.name.message}
           </p>
 
-          <label className="block mt-4 mb-1 text-lg">
+          <label className="block mt-4 mb-1">
             メールアドレス<span className="text-red-400">*</span>
           </label>
           <input
@@ -130,7 +131,7 @@ const ContentsContact = () => {
             {errors.email && errors.email.message}
           </p>
 
-          <label className="block mt-4 mb-1 text-lg">
+          <label className="block mt-4 mb-1">
             メッセージ本文<span className="text-red-400">*</span>
           </label>
           <textarea
@@ -149,11 +150,22 @@ const ContentsContact = () => {
             {errors.text && errors.text.message}
           </p>
 
-          <input
-            type="submit"
-            value="送信する"
-            className="mt-5 w-full border-2 border-gray-50 p-2 hover:bg-gray-50 hover:text-gray-350 bg-gray-350 duration-150 rounded-none"
-          />
+          <div
+            
+          >
+            <button
+              onMouseEnter={() => setIsMouseHover(true)}
+              onMouseLeave={() => setIsMouseHover(false)}
+              type="submit"
+              className="mt-8 w-full bg-gray-350 text-gray-50 relative flex items-end py-4 px-5 border border-gray-50 hover:bg-gray-50 hover:text-gray-350 transform duration-300 cursor-pointer hover:shadow-2xl"
+            >
+              SEND MAIL
+            <span
+              className={`andmore-position duration-300 ${
+                isMouseHover ? 'bg-gray-350' : 'bg-gray-50'
+              }`}></span>
+            </button>
+          </div>
         </form>
       </div>
     </section>

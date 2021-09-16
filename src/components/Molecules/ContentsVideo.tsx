@@ -31,7 +31,7 @@ const ContentsVideo = () => {
             <div
               onMouseEnter={() => setIsMouseHover(true)}
               onMouseLeave={() => setIsMouseHover(false)}
-              className="mt-8 text-xl text-gray-350 relative flex items-end py-4 px-5 border border-gray-350 hover:bg-gray-350 hover:text-gray-50 transform hover:scale-110 duration-300 cursor-pointer hover:shadow-2xl"
+              className="mt-8 text-gray-350 relative flex items-end py-4 px-5 border border-gray-350 hover:bg-gray-350 hover:text-gray-50 transform hover:scale-110 duration-300 cursor-pointer hover:shadow-2xl"
             >
               <div>AND MORE</div>
               <span
