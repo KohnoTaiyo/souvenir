@@ -18,9 +18,7 @@ const ContentsVideo = () => {
         <div className="xl:wrap-big md:wrap wrap-sp">
           <div className="bg-gray-350">
             {isClickThumbnail ?
-              <div className="relative w-full h-0 pb-pm overflow-hidden">
-                <Video url="https://youtu.be/8RJ28sZbTiI?rel=0" />
-              </div>
+              <Video url="https://www.youtube.com/embed/8RJ28sZbTiI" />
               :
               <div className="relative cursor-pointer" onClick={() => changeIsClickThumbnail(true)}>
                 <Image  width="840" height="475" src="/tabaninatte_thumbnail.jpg" layout="responsive" alt="束になって" />
