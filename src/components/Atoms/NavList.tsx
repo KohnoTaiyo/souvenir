@@ -35,6 +35,18 @@ const NavList = (props: Hover) => {
           )}
         </li>
       ))}
+      <Link href="https://svnrmerch.theshop.jp">
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`text-gray-${props.color} fill-current`}>
+          <span
+            onClick={props.clickEvent}
+            className={`${props.hover} text-gray-${props.color} px-1 duration-150 cursor-pointer`}>
+            Store
+          </span>
+        </a>
+      </Link>
     </>
   )
 }
