@@ -15,7 +15,7 @@ const Header = () => {
     list: '50',
     icon: '50',
   })
-  let livePageColor = move ? '50' : '350'
+  const livePageColor = move ? '50' : '350'
 
   if (process.browser) {
     {

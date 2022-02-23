@@ -11,9 +11,30 @@ const LiveContents = () => {
   const [update, setUpdate] = useState(false)
   const [isMouseHover, setIsMouseHover] = useState(false)
   const articles = () => {
-    if (articlesData.slice(0, 3).length === 3) {
-      return articlesData.slice(0, 2)
-    }
+    // const date = new Date()
+    // const currentDate = date.getDate()
+
+    // // 現在の日付以降の日付データ
+    // const datesAfterCurrentDate
+
+    // // 現在の日付データとarticlesDataを比較して
+    // // 現在の日付データ以上のarticlesDataを配列にする
+    // articlesData.forEach((elem, index) => {
+    //   if (elem >= currentDate)
+    //   {
+
+    //   }
+    // })
+
+    // }
+
+    if (articlesData)
+      if (articlesData.slice(0, 3).length === 3) {
+        console.log('articlesData')
+        var test = articlesData.slice(0, 3)
+        console.log()
+        return articlesData.slice(0, 2)
+      }
     return articlesData.slice(0, 3)
   }
   const totalArticles = () => {
@@ -48,7 +69,7 @@ const LiveContents = () => {
       }
     })()
 
-  return () => {
+    return () => {
       unmounted = true
     }
   }, [])
@@ -60,7 +81,6 @@ const LiveContents = () => {
       <div className="xl:wrap-big wrap-sp md:wrap">
         <h2 className="title text-gray-50 lg:text-left lg:text-6xl">Live</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-8 leading-5 text-gray-50">
-
           <div
             className={`block md:flex col-span-2 md:col-span-3 overflow-hidden md:min-h-live leading-6 ${
               update ? 'animate-fadeH' : ''

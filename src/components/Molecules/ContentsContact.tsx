@@ -122,7 +122,7 @@ const ContentsContact = () => {
                 message: '150文字以内で入力してください',
               },
               pattern: {
-                value: /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                value: /^[a-zA-Z0-9.!#$%&'*+=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
                 message: 'メールアドレスの形式が間違っています',
               },
             })}
@@ -150,20 +150,17 @@ const ContentsContact = () => {
             {errors.text && errors.text.message}
           </p>
 
-          <div
-            
-          >
+          <div>
             <button
               onMouseEnter={() => setIsMouseHover(true)}
               onMouseLeave={() => setIsMouseHover(false)}
               type="submit"
-              className="mt-8 w-full bg-gray-350 text-gray-50 relative flex items-end py-4 px-5 border border-gray-50 hover:bg-gray-50 hover:text-gray-350 transform duration-300 cursor-pointer hover:shadow-2xl"
-            >
+              className="mt-8 w-full bg-gray-350 text-gray-50 relative flex items-end py-4 px-5 border border-gray-50 hover:bg-gray-50 hover:text-gray-350 transform duration-300 cursor-pointer hover:shadow-2xl">
               SEND MAIL
-            <span
-              className={`andmore-position duration-300 ${
-                isMouseHover ? 'bg-gray-350' : 'bg-gray-50'
-              }`}></span>
+              <span
+                className={`andmore-position duration-300 ${
+                  isMouseHover ? 'bg-gray-350' : 'bg-gray-50'
+                }`}></span>
             </button>
           </div>
         </form>
