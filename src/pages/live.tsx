@@ -1,5 +1,6 @@
 import React from 'react'
 import Layout from '../components/Templates/Layout'
+import ChevronDown from '../../public/chevron_down.svg'
 import { Article } from '../interfaces'
 import Image from 'next/image'
 import { GetStaticProps } from 'next'
@@ -10,27 +11,47 @@ type StaticArticle = {
 
 const LivePage = ({ liveDatas }: StaticArticle) => {
   const openEvent = (e: React.MouseEvent<HTMLElement>) => {
-    ;(e.target as Element).nextElementSibling?.classList.toggle('h-full')
-    ;(e.target as Element).nextElementSibling?.classList.toggle('opacity-100')
-    ;(e.target as Element).nextElementSibling?.classList.toggle('mt-4')
-    ;(e.target as Element).nextElementSibling?.classList.contains('invisible')
-      ? (e.target as Element).nextElementSibling?.classList.remove('invisible')
-      : (e.target as Element).nextElementSibling?.classList.add('invisible')
+    ;(e.currentTarget as Element).lastElementChild?.classList.toggle(
+      'rotate-180'
+    )
+    ;(e.currentTarget as Element).nextElementSibling?.classList.toggle('h-full')
+    ;(e.currentTarget as Element).nextElementSibling?.classList.toggle(
+      'opacity-100'
+    )
+    ;(e.currentTarget as Element).nextElementSibling?.classList.toggle('mt-4')
+    ;(e.currentTarget as Element).nextElementSibling?.classList.contains(
+      'invisible'
+    )
+      ? (e.currentTarget as Element).nextElementSibling?.classList.remove(
+          'invisible'
+        )
+      : (e.currentTarget as Element).nextElementSibling?.classList.add(
+          'invisible'
+        )
   }
 
   return (
     <Layout title="All Live | Souvenir">
       <section className="bg-gray-50 font-light text-gray-350 lg:pl-60">
         <div className="2xl:wrap-big wrap-sp md:wrap">
-          <h2 className="title mt-10 lg:mt-0 lg:text-left lg:text-6xl">All Live</h2>
+          <h2 className="title mt-10 lg:mt-0 lg:text-left lg:text-6xl">
+            All Live
+          </h2>
           {liveDatas.map((val: Article) => (
             <div
               key={val['id']}
               className={`box-shadow mt-8 py-4 px-5 transform hover:scale-100 lg:hover:scale-105  duration-300 cursor-pointer lg:hover:shadow-2xl`}>
-              <div onClick={openEvent}>
-                {val['date']}
-                <br />
-                {val['title']}
+              <div
+                className="flex justify-between items-center"
+                onClick={openEvent}>
+                <div>
+                  {val['date']}
+                  <br />
+                  {val['title']}
+                </div>
+                <div className="transform">
+                  <ChevronDown />
+                </div>
               </div>
               <div
                 className={`block lg:flex justify-between h-0 opacity-0 duration-500 text-gray-50 invisible`}>
