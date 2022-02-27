@@ -40,9 +40,9 @@ const LivePage = ({ liveDatas }: StaticArticle) => {
           {liveDatas.map((val: Article) => (
             <div
               key={val['id']}
-              className={`box-shadow mt-8 py-4 px-5 transform hover:scale-100 lg:hover:scale-105  duration-300 cursor-pointer lg:hover:shadow-2xl`}>
+              className={`box-shadow mt-8 transform hover:scale-100 lg:hover:scale-105  duration-300 cursor-pointer lg:hover:shadow-2xl`}>
               <div
-                className="flex justify-between items-center"
+                className="flex justify-between items-center py-4 px-5"
                 onClick={openEvent}>
                 <div>
                   {val['date']}
@@ -54,7 +54,7 @@ const LivePage = ({ liveDatas }: StaticArticle) => {
                 </div>
               </div>
               <div
-                className={`block lg:flex justify-between h-0 opacity-0 duration-500 text-gray-50 invisible`}>
+                className={`block lg:flex justify-between h-0 px-5 opacity-0 duration-500 text-gray-50 invisible`}>
                 <div className="w-full mb-4 block lg:hidden">
                   <Image
                     layout="responsive"
@@ -65,7 +65,7 @@ const LivePage = ({ liveDatas }: StaticArticle) => {
                     className={`max-h-img m-auto`}
                   />
                 </div>
-                <div className="lg:w-1/2 lg:mr-2 bg-gray-350 px-4 py-3">
+                <div className="lg:w-1/2 lg:mr-2 bg-gray-350 px-4 py-3 mb-4">
                   <p className="border-b border-gray-50 pb-1 mb-2">
                     Place : {val['place']}
                   </p>
@@ -77,7 +77,7 @@ const LivePage = ({ liveDatas }: StaticArticle) => {
                   </p>
                   <p>Guest : {val['guest']}</p>
                 </div>
-                <div className="w-1/2 ml-2 hidden lg:block">
+                <div className="w-1/2 ml-2 hidden lg:block mb-4">
                   <Image
                     layout="responsive"
                     src={val.image.url}
