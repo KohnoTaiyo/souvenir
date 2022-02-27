@@ -49,7 +49,7 @@ const LivePage = ({ liveDatas }: StaticArticle) => {
                   <br />
                   {val['title']}
                 </div>
-                <div className="transform">
+                <div className="transform duration-500">
                   <ChevronDown />
                 </div>
               </div>
