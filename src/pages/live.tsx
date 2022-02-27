@@ -18,7 +18,6 @@ const LivePage = ({ liveDatas }: StaticArticle) => {
     ;(e.currentTarget as Element).nextElementSibling?.classList.toggle(
       'opacity-100'
     )
-    ;(e.currentTarget as Element).nextElementSibling?.classList.toggle('mt-4')
     ;(e.currentTarget as Element).nextElementSibling?.classList.contains(
       'invisible'
     )
