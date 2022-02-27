@@ -1,8 +1,8 @@
 module.exports = {
   mode: 'jit',
   purge: [
-    './src/components/**/*.{js,ts,jsx,tsx}',
-    './src/pages/**/*.{js,ts,jsx,tsx}',
+    // './src/components/**/*.{js,ts,jsx,tsx}',
+    // './src/pages/**/*.{js,ts,jsx,tsx}',
   ],
   darkMode: false,
   theme: {
@@ -28,7 +28,7 @@ module.exports = {
       },
       width: {
         wj: '30rem',
-        wt: '8%'
+        wt: '8%',
       },
       margin: {
         hn: '42vh',
@@ -136,8 +136,8 @@ module.exports = {
           height: '1px',
         },
         '.start-triangle': {
-          clipPath: 'polygon(0 0, 0% 100%, 100% 50%)'
-        }
+          clipPath: 'polygon(0 0, 0% 100%, 100% 50%)',
+        },
       }
       addUtilities(newUtilities, ['responsive', 'hover'])
     },
