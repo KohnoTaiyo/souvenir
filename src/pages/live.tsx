@@ -93,10 +93,7 @@ export const getStaticProps: GetStaticProps = async () => {
     key
   )
     .then((res) => res.json())
-    .then((res) => {
-      console.log(res.contents)
-      return res.contents
-    })
+    .then((res) => res.contents)
   const sortData = fetchDate.sort(compare)
   return {
     props: {
