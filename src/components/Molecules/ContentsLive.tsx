@@ -11,9 +11,10 @@ const LiveContents = () => {
   const [update, setUpdate] = useState(false)
   const [isMouseHover, setIsMouseHover] = useState(false)
   const articles = () => {
-    if (articlesData.slice(0, 3).length === 3) {
-      return articlesData.slice(0, 2)
-    }
+    if (articlesData)
+      if (articlesData.slice(0, 3).length === 3) {
+        return articlesData.slice(0, 2)
+      }
     return articlesData.slice(0, 3)
   }
   const totalArticles = () => {
@@ -29,9 +30,9 @@ const LiveContents = () => {
     const key = {
       headers: { 'X-API-KEY': process.env.NEXT_PUBLIC_API_KEY ?? '' },
     }
-    const compare = (a: Article, b: Article) => {
+    const compareByAscendingOrder = (a: Article, b: Article) => {
       let r = 0
-      a.date < b.date ? (r = 1) : (r = -1)
+      a.date > b.date ? (r = 1) : (r = -1)
       return r
     }
     ;(async () => {
@@ -42,13 +43,71 @@ const LiveContents = () => {
         )
           .then((res) => res.json())
           .then((res) => res.contents)
-        const sortData = fetchDate.sort(compare).slice(0, 5)
-        setArticlesData(sortData)
-        setActiveLive(sortData[0])
+        const currentDate = new Date()
+        // 現在の日付と比較して直近の2日間のarticlesDataを取得
+        const filteredData = fetchDate.filter(function (value: Article) {
+          console.log(fetchDate)
+          const year = Number(value.date.slice(0, 4))
+          const month = Number(value.date.slice(5, 7))
+          const day = Number(value.date.slice(8, 10))
+
+          const eachDate = new Date(year, month - 1, day)
+
+          if (currentDate <= eachDate) {
+            return value
+          }
+        })
+
+        let twoDaysDataToDisplay
+        if (filteredData.length >= 2) {
+          twoDaysDataToDisplay = filteredData
+            .sort(compareByAscendingOrder)
+            .slice(0, 2)
+        }
+        // 現在の日付と比較して直近のデータが1日ぶんしかない場合、そのデータと過去の直近のデータを取得
+        else if (filteredData.length == 1) {
+          twoDaysDataToDisplay = filteredData
+            .sort(compareByAscendingOrder)
+            .slice(0, 1)
+          const pastDates = fetchDate
+            .filter(function (value: Article) {
+              const year = Number(value.date.slice(0, 4))
+              const month = Number(value.date.slice(5, 7))
+              const day = Number(value.date.slice(8, 10))
+
+              const eachDate = new Date(year, month - 1, day)
+
+              if (currentDate > eachDate) {
+                return value
+              }
+            })
+            .slice(0, 1)
+
+          twoDaysDataToDisplay.push(pastDates[0])
+        }
+        // 現在の日付と比較して直近のデータがない場合、と過去の直近のデータ2つを取得
+        else if (filteredData.length == 0) {
+          twoDaysDataToDisplay = fetchDate
+            .filter(function (value: Article) {
+              const year = Number(value.date.slice(0, 4))
+              const month = Number(value.date.slice(5, 7))
+              const day = Number(value.date.slice(8, 10))
+
+              const eachDate = new Date(year, month - 1, day)
+
+              if (currentDate > eachDate) {
+                return value
+              }
+            })
+            .slice(0, 2)
+        }
+
+        setArticlesData(twoDaysDataToDisplay)
+        setActiveLive(twoDaysDataToDisplay[0])
       }
     })()
 
-  return () => {
+    return () => {
       unmounted = true
     }
   }, [])
@@ -60,7 +119,6 @@ const LiveContents = () => {
       <div className="xl:wrap-big wrap-sp md:wrap">
         <h2 className="title text-gray-50 lg:text-left lg:text-6xl">Live</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-8 leading-5 text-gray-50">
-
           <div
             className={`block md:flex col-span-2 md:col-span-3 overflow-hidden md:min-h-live leading-6 ${
               update ? 'animate-fadeH' : ''
