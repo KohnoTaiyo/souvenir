@@ -11,10 +11,9 @@ const LiveContents = () => {
   const [update, setUpdate] = useState(false)
   const [isMouseHover, setIsMouseHover] = useState(false)
   const articles = () => {
-    if (articlesData)
-      if (articlesData.slice(0, 3).length === 3) {
-        return articlesData.slice(0, 2)
-      }
+    if (articlesData.slice(0, 3).length === 3) {
+      return articlesData.slice(0, 2)
+    }
     return articlesData.slice(0, 3)
   }
   const totalArticles = () => {
@@ -26,15 +25,10 @@ const LiveContents = () => {
 
   useEffect(() => {
     let unmounted = false
-
     const key = {
       headers: { 'X-API-KEY': process.env.NEXT_PUBLIC_API_KEY ?? '' },
     }
-    const compareByAscendingOrder = (a: Article, b: Article) => {
-      let r = 0
-      a.date > b.date ? (r = 1) : (r = -1)
-      return r
-    }
+
     ;(async () => {
       if (!unmounted) {
         const fetchDate = await fetch(
@@ -43,67 +37,25 @@ const LiveContents = () => {
         )
           .then((res) => res.json())
           .then((res) => res.contents)
-        const currentDate = new Date()
-        // 現在の日付と比較して直近の2日間のarticlesDataを取得
-        const filteredData = fetchDate.filter(function (value: Article) {
-          console.log(fetchDate)
-          const year = Number(value.date.slice(0, 4))
-          const month = Number(value.date.slice(5, 7))
-          const day = Number(value.date.slice(8, 10))
-
-          const eachDate = new Date(year, month - 1, day)
-
-          if (currentDate <= eachDate) {
-            return value
-          }
-        })
-
-        let twoDaysDataToDisplay
+        const currentDate = new Date().setHours(0, 0, 0, 0)
+        const filteredData = fetchDate
+          .sort((a: Article, b: Article) => {
+            a.date < b.date ? 1 : -1
+          })
+          .filter(
+            (value: Article) => new Date(currentDate) <= new Date(value.date)
+          )
         if (filteredData.length >= 2) {
-          twoDaysDataToDisplay = filteredData
-            .sort(compareByAscendingOrder)
-            .slice(0, 2)
+          const twoDaysDataToDisplay = filteredData.slice(-2)
+
+          setArticlesData(twoDaysDataToDisplay)
+          setActiveLive(twoDaysDataToDisplay[0])
+        } else {
+          const twoDaysDataToDisplay = fetchDate.slice(0, 2)
+
+          setArticlesData(twoDaysDataToDisplay)
+          setActiveLive(twoDaysDataToDisplay[0])
         }
-        // 現在の日付と比較して直近のデータが1日ぶんしかない場合、そのデータと過去の直近のデータを取得
-        else if (filteredData.length == 1) {
-          twoDaysDataToDisplay = filteredData
-            .sort(compareByAscendingOrder)
-            .slice(0, 1)
-          const pastDates = fetchDate
-            .filter(function (value: Article) {
-              const year = Number(value.date.slice(0, 4))
-              const month = Number(value.date.slice(5, 7))
-              const day = Number(value.date.slice(8, 10))
-
-              const eachDate = new Date(year, month - 1, day)
-
-              if (currentDate > eachDate) {
-                return value
-              }
-            })
-            .slice(0, 1)
-
-          twoDaysDataToDisplay.push(pastDates[0])
-        }
-        // 現在の日付と比較して直近のデータがない場合、と過去の直近のデータ2つを取得
-        else if (filteredData.length == 0) {
-          twoDaysDataToDisplay = fetchDate
-            .filter(function (value: Article) {
-              const year = Number(value.date.slice(0, 4))
-              const month = Number(value.date.slice(5, 7))
-              const day = Number(value.date.slice(8, 10))
-
-              const eachDate = new Date(year, month - 1, day)
-
-              if (currentDate > eachDate) {
-                return value
-              }
-            })
-            .slice(0, 2)
-        }
-
-        setArticlesData(twoDaysDataToDisplay)
-        setActiveLive(twoDaysDataToDisplay[0])
       }
     })()
 
