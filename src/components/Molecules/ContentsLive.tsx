@@ -25,15 +25,10 @@ const LiveContents = () => {
 
   useEffect(() => {
     let unmounted = false
-
     const key = {
       headers: { 'X-API-KEY': process.env.NEXT_PUBLIC_API_KEY ?? '' },
     }
-    const compare = (a: Article, b: Article) => {
-      let r = 0
-      a.date < b.date ? (r = 1) : (r = -1)
-      return r
-    }
+
     ;(async () => {
       if (!unmounted) {
         const fetchDate = await fetch(
@@ -42,13 +37,29 @@ const LiveContents = () => {
         )
           .then((res) => res.json())
           .then((res) => res.contents)
-        const sortData = fetchDate.sort(compare).slice(0, 5)
-        setArticlesData(sortData)
-        setActiveLive(sortData[0])
+        const currentDate = new Date().setHours(0, 0, 0, 0)
+        const filteredData = fetchDate
+          .sort((a: Article, b: Article) => {
+            a.date < b.date ? 1 : -1
+          })
+          .filter(
+            (value: Article) => new Date(currentDate) <= new Date(value.date)
+          )
+        if (filteredData.length >= 2) {
+          const twoDaysDataToDisplay = filteredData.slice(-2)
+
+          setArticlesData(twoDaysDataToDisplay)
+          setActiveLive(twoDaysDataToDisplay[0])
+        } else {
+          const twoDaysDataToDisplay = fetchDate.slice(0, 2)
+
+          setArticlesData(twoDaysDataToDisplay)
+          setActiveLive(twoDaysDataToDisplay[0])
+        }
       }
     })()
 
-  return () => {
+    return () => {
       unmounted = true
     }
   }, [])
@@ -60,7 +71,6 @@ const LiveContents = () => {
       <div className="xl:wrap-big wrap-sp md:wrap">
         <h2 className="title text-gray-50 lg:text-left lg:text-6xl">Live</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-8 leading-5 text-gray-50">
-
           <div
             className={`block md:flex col-span-2 md:col-span-3 overflow-hidden md:min-h-live leading-6 ${
               update ? 'animate-fadeH' : ''
