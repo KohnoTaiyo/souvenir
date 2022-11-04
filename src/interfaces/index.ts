@@ -1,3 +1,10 @@
+export type LiveData = {
+  contents: Article[],
+  limit?: number,
+  offset?: number,
+  totalCount: number
+}
+
 export type Article = {
   id: string
   title: string

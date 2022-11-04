@@ -1,15 +1,22 @@
 import React from 'react'
 import Layout from '../components/Templates/Layout'
 import ChevronDown from '../../public/chevron_down.svg'
-import { Article } from '../interfaces'
+import { LiveData, Article } from '../interfaces'
 import Image from 'next/image'
 import { GetStaticProps } from 'next'
 
 type StaticArticle = {
-  liveDatas: Article[]
+  data: LiveData
 }
 
-const LivePage = ({ liveDatas }: StaticArticle) => {
+const LivePage = ({ data }: StaticArticle) => {
+  const compare = (a: Article, b: Article) => {
+    let r = 0
+    a.date < b.date ? (r = 1) : (r = -1)
+    return r
+  }
+  const liveData = data.contents.sort(compare)
+
   const openEvent = (e: React.MouseEvent<HTMLElement>) => {
     ;(e.currentTarget as Element).lastElementChild?.classList.toggle(
       'rotate-180'
@@ -36,7 +43,7 @@ const LivePage = ({ liveDatas }: StaticArticle) => {
           <h2 className="title mt-10 lg:mt-0 lg:text-left lg:text-6xl">
             All Live
           </h2>
-          {liveDatas.map((val: Article) => (
+          {liveData.map((val: Article) => (
             <div
               key={val['id']}
               className={`box-shadow mt-8 transform hover:scale-100 lg:hover:scale-105  duration-300 cursor-pointer lg:hover:shadow-2xl`}>
@@ -101,21 +108,15 @@ export const getStaticProps: GetStaticProps = async () => {
   const key = {
     headers: { 'X-API-KEY': process.env.NEXT_PUBLIC_API_KEY ?? '' },
   }
-  const compare = (a: Article, b: Article) => {
-    let r = 0
-    a.date < b.date ? (r = 1) : (r = -1)
-    return r
-  }
   const fetchDate = await fetch(
-    'https://souvenir.microcms.io/api/v1/live?limit=25',
+    'https://souvenir.microcms.io/api/v1/live?limit=50',
     key
   )
     .then((res) => res.json())
-    .then((res) => res.contents)
-  const sortData = fetchDate.sort(compare)
+
   return {
     props: {
-      liveDatas: sortData,
+      data: fetchDate,
     },
   }
 }

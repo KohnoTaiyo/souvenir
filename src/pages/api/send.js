@@ -14,7 +14,7 @@ export default async function (req) {
     <p>フリガナ：${message.kana}</p>
     <p>メール：${message.email}</p>
     <br>
-    <p>${message.text}</p>`,
+    <p>${message.text.replace(/\n/g, '<br />')}</p>`,
   }
   await sgMail.send(content)
 }
