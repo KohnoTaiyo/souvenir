@@ -77,7 +77,7 @@ const Layout = ({ children, title = 'Souvenir' }: Props) => {
         <meta name="twitter:site" content="@Souvenircb" />
       </Head>
       <div
-        className="relative tracking-widest bg-gray-50"
+        className="relative tracking-widest bg-gray-50 overflow-hidden"
         style={{ minHeight: '100vh' }}>
         <Header />
         {children}

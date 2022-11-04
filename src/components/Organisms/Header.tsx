@@ -160,11 +160,11 @@ const Header = () => {
                   onMouseLeave={() => setIsMouseHover(false)}
                   className="hover:shadow-2xl w-full h-full duration-150">
                   <Image
-                    src="/jacket.jpg"
+                    src="/time_trip_thumbnail.jpg"
                     width="600"
                     height="600"
                     layout="responsive"
-                    alt="近況報告"
+                    alt="Time Trip"
                   />
                 </div>
                 <p className="text-gray-50 mt-1 duration-150 text-shadow">

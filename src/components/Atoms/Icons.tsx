@@ -19,7 +19,7 @@ const Icons = (props: Color) => (
         <Twitter className="w-7 h-7 duration-150" />
       </a>
     </Link>
-    <Link href="https://linkcloud.mu/13e2b5ef">
+    <Link href="https://linkcloud.mu/775b4906">
       <a
         target="_blank"
         rel="noopener noreferrer"
