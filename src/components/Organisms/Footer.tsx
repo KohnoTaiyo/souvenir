@@ -10,7 +10,7 @@ const Footer = () => {
       <div className="md:wrap wrap-sp lg:pl-80">
         <div className="flex justify-between pb-4 border-b border-gray-350">
           <Logo className="fill-current w-20 text-gray-350 h-12" />
-          <div className="w-40 mt-3">
+          <div className="w-48 mt-3">
             <Icons color={'350'} />
           </div>
         </div>

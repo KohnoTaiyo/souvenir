@@ -153,7 +153,7 @@ const Header = () => {
             isScrollToggle()
           }}>
           <div className="w-wj m-auto mt-hj">
-            <Link href="https://linkcloud.mu/13e2b5ef">
+            <Link href="https://linkcloud.mu/775b4906">
               <a target="_blank" rel="noopener noreferrer">
                 <div
                   onMouseEnter={() => setIsMouseHover(true)}
@@ -181,7 +181,7 @@ const Header = () => {
           style={{ lineHeight: 2 }}>
           <div className="w-4/5 mx-auto h-screen flex justify-center items-center">
             <div>
-              <div className="border-b border-gray-50 pb-3 w-72">
+              <div className="border-b border-gray-50 pb-3 w-80">
                 <NavList
                   color={'50'}
                   hover={''}
@@ -190,7 +190,7 @@ const Header = () => {
               </div>
               <div className="flex justify-between w-full mt-6">
                 <Logo className="fill-current w-20 text-gray-50 h-12" />
-                <div className="w-36 mt-1.5">
+                <div className="w-48 mt-1.5">
                   <Icons color={'50'} />
                 </div>
               </div>
