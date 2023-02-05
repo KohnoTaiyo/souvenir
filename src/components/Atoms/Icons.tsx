@@ -4,6 +4,7 @@ import Music from '../../../public/music.svg'
 import Twitter from '../../../public/twitter.svg'
 import Youtube from '../../../public/youtube.svg'
 import Instagram from '../../../public/instagram_icon.svg'
+import Store from '../../../public/store.svg'
 
 type Color = {
   color: string
@@ -41,6 +42,14 @@ const Icons = (props: Color) => (
         rel="noopener noreferrer"
         className={`text-gray-${props.color} fill-current`}>
         <Instagram className="w-8 h-8 duration-150 -mr-1" />
+      </a>
+    </Link>
+    <Link href="https://svnrmerch.theshop.jp/">
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`text-gray-${props.color} fill-current`}>
+        <Store className="w-8 h-8 duration-150 -mr-1" />
       </a>
     </Link>
   </div>

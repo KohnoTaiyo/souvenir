@@ -18,10 +18,10 @@ const ContentsVideo = () => {
         <div className="xl:wrap-big md:wrap wrap-sp">
           <div className="bg-gray-350">
             {isClickThumbnail ?
-              <Video url="https://www.youtube.com/embed/8RJ28sZbTiI" />
+              <Video url="https://www.youtube.com/embed/E-sWBoo5tIc" />
               :
               <div className="relative cursor-pointer" onClick={() => changeIsClickThumbnail(true)}>
-                <Image  width="840" height="475" src="/tabaninatte_thumbnail.jpg" layout="responsive" alt="束になって" />
+                <Image  width="840" height="475" src="/mv/shutter_thumbnail.jpg" layout="responsive" alt="束になって" />
                 <div className="bg-white w-wt h-1/6 absolute inset-0 m-auto start-triangle bg-opacity-50 box-shadow"></div>
               </div>
             }
