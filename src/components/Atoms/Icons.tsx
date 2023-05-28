@@ -20,7 +20,7 @@ const Icons = (props: Color) => (
         <Twitter className="w-7 h-7 duration-150" />
       </a>
     </Link>
-    <Link href="https://linkcloud.mu/775b4906">
+    <Link href="https://friendship.lnk.to/CastawayProgram">
       <a
         target="_blank"
         rel="noopener noreferrer"

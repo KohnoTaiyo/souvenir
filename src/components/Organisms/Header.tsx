@@ -153,7 +153,7 @@ const Header = () => {
             isScrollToggle()
           }}>
           <div className="w-wj m-auto mt-hj">
-            <Link href="https://linkcloud.mu/775b4906">
+            <Link href="https://friendship.lnk.to/CastawayProgram">
               <a target="_blank" rel="noopener noreferrer">
                 <div
                   onMouseEnter={() => setIsMouseHover(true)}
