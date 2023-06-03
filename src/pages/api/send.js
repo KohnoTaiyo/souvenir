@@ -16,5 +16,10 @@ export default async function (req) {
     <br>
     <p>${message.text.replace(/\n/g, '<br />')}</p>`,
   }
-  await sgMail.send(content)
+
+  try {
+    await sgMail.send(content)
+  } catch (e) {
+    console.log(e)
+  }
 }
