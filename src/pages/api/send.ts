@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { Resend } from 'resend'
 
-const resend = new Resend(process.env.NEXT_PUBLIC_MAIL_KEY)
+const resend = new Resend('re_HbBuzSUT_37Ugv4ynfa8kkkXYcquwTzMs')
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   try {
