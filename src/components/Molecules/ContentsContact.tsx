@@ -14,9 +14,16 @@ const ContentsContact = () => {
         message: data,
       }),
     })
-    alert(
-      'お問い合わせありがとうございます。3日経っても連絡がない場合はお手数ですが、もう一度ご連絡ください。TwitterのDMからでもお問い合わせできます。'
-    )
+      .then((res) => {
+        alert(
+          res.ok
+            ? 'お問い合わせありがとうございます。3日経っても連絡がない場合はお手数ですが、もう一度ご連絡ください。TwitterのDMからでもお問い合わせできます。'
+            : '送信エラーが発生しました。お時間をおいて再度お試しいただくかTwitterのDMなどから直接ご連絡ください。'
+        )
+      })
+      .catch((err) => {
+        console.error(err)
+      })
     reset()
     setVal('')
   }
@@ -122,7 +129,8 @@ const ContentsContact = () => {
                 message: '150文字以内で入力してください',
               },
               pattern: {
-                value: /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                value:
+                  /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
                 message: 'メールアドレスの形式が間違っています',
               },
             })}
@@ -150,20 +158,17 @@ const ContentsContact = () => {
             {errors.text && errors.text.message}
           </p>
 
-          <div
-            
-          >
+          <div>
             <button
               onMouseEnter={() => setIsMouseHover(true)}
               onMouseLeave={() => setIsMouseHover(false)}
               type="submit"
-              className="mt-8 w-full bg-gray-350 text-gray-50 relative flex items-end py-4 px-5 border border-gray-50 hover:bg-gray-50 hover:text-gray-350 transform duration-300 cursor-pointer hover:shadow-2xl"
-            >
+              className="mt-8 w-full bg-gray-350 text-gray-50 relative flex items-end py-4 px-5 border border-gray-50 hover:bg-gray-50 hover:text-gray-350 transform duration-300 cursor-pointer hover:shadow-2xl">
               SEND MAIL
-            <span
-              className={`andmore-position duration-300 ${
-                isMouseHover ? 'bg-gray-350' : 'bg-gray-50'
-              }`}></span>
+              <span
+                className={`andmore-position duration-300 ${
+                  isMouseHover ? 'bg-gray-350' : 'bg-gray-50'
+                }`}></span>
             </button>
           </div>
         </form>
