@@ -20,7 +20,7 @@ const MainVisual = () => {
         priority={true}
         alt="Souvenir official website"
       />
-      <div className="absolute z-50 top-1/2 translate-x-1/2 -right-2 flex">
+      <div className="absolute z-50 top-1/2 translate-x-1/2 right-4 flex sm:right-7">
         <Scroll className="animate-scroll -mr-6 sm:-mr-2.5" />
         <p className="text-gray-50 transform -rotate-90 text-sm font-light h-3 -mr-2 sm:mr-0.5">
           SCROLL

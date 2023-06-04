@@ -15,7 +15,6 @@ const Header = () => {
     list: '50',
     icon: '50',
   })
-  let livePageColor = move ? '50' : '350'
 
   if (process.browser) {
     {
@@ -84,10 +83,8 @@ const Header = () => {
         <a className="w-full h-full relative z-50">
           <Logo
             className={`fill-current w-24 md:w-48 fixed text-gray-${
-              scrollSizeChange.top
-            } mt-4 ml-4 md:mt-6 md:ml-6 duration-150 ${
-              router.pathname !== '/' ? 'text-gray-' + livePageColor : ''
-            }`}
+              router.pathname !== '/' ? '350' : scrollSizeChange.top
+            } mt-4 ml-4 md:mt-6 md:ml-6 duration-150`}
           />
         </a>
       </Link>
@@ -127,19 +124,15 @@ const Header = () => {
         }}>
         <div
           className={`w-14 h-0.5 bg-gray-${
-            scrollSizeChange.top
+            router.pathname !== '/' ? '350' : scrollSizeChange.top
           } duration-150 transform ${
             move ? 'rotate-45 mt-1.5' : 'rotate-0 mt-0'
-          } ${
-            router.pathname !== '/' ? 'bg-gray-' + livePageColor : ''
           }`}></div>
         <div
           className={`w-14 h-0.5 bg-gray-${
-            scrollSizeChange.top
+            router.pathname !== '/' ? '350' : scrollSizeChange.top
           } duration-150 mt-3 transform ${
             move ? '-rotate-45 -mt-0.5' : 'rotate-0 mt-3'
-          } ${
-            router.pathname !== '/' ? 'bg-gray-' + livePageColor : ''
           }`}></div>
       </div>
       <div
