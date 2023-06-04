@@ -15,25 +15,24 @@ const LivePage = ({ data }: StaticArticle) => {
     a.date < b.date ? (r = 1) : (r = -1)
     return r
   }
-  const liveData = data.contents.sort(compare)
+  const liveData = data.contents?.sort(compare)
 
-  const openEvent = (e: React.MouseEvent<HTMLElement>) => {
-    ;(e.currentTarget as Element).lastElementChild?.classList.toggle(
-      'rotate-180'
-    )
-    ;(e.currentTarget as Element).nextElementSibling?.classList.toggle('h-full')
-    ;(e.currentTarget as Element).nextElementSibling?.classList.toggle(
-      'opacity-100'
-    )
-    ;(e.currentTarget as Element).nextElementSibling?.classList.contains(
-      'invisible'
-    )
-      ? (e.currentTarget as Element).nextElementSibling?.classList.remove(
-          'invisible'
-        )
-      : (e.currentTarget as Element).nextElementSibling?.classList.add(
-          'invisible'
-        )
+  const openEvent = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.currentTarget.lastElementChild?.classList.toggle('rotate-180')
+    const nextElementSibling = e.currentTarget.nextElementSibling
+    nextElementSibling?.classList.toggle('h-full')
+    nextElementSibling?.classList.toggle('pb-5')
+
+    if (nextElementSibling?.classList.contains('opacity-0')) {
+      nextElementSibling.classList.add('opacity-100')
+      nextElementSibling.classList.remove('opacity-0')
+    } else {
+      nextElementSibling?.classList.remove('opacity-100')
+      nextElementSibling?.classList.add('opacity-0')
+    }
+    nextElementSibling?.classList.contains('invisible')
+      ? nextElementSibling.classList.remove('invisible')
+      : nextElementSibling?.classList.add('invisible')
   }
 
   return (
@@ -43,7 +42,7 @@ const LivePage = ({ data }: StaticArticle) => {
           <h2 className="title mt-10 lg:mt-0 lg:text-left lg:text-6xl">
             All Live
           </h2>
-          {liveData.map((val: Article) => (
+          {liveData?.map((val: Article) => (
             <div
               key={val['id']}
               className={`box-shadow mt-8 transform hover:scale-100 lg:hover:scale-105  duration-300 cursor-pointer lg:hover:shadow-2xl`}>
@@ -71,7 +70,7 @@ const LivePage = ({ data }: StaticArticle) => {
                     className={`max-h-img m-auto`}
                   />
                 </div>
-                <div className="lg:w-1/2 lg:mr-2 bg-gray-350 px-4 py-3 mb-4">
+                <div className="lg:w-1/2 lg:mr-2 bg-gray-350 px-4 py-3">
                   <p className="border-b border-gray-50 pb-1 mb-2">
                     Place : {val['place']}
                   </p>
@@ -111,8 +110,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const fetchDate = await fetch(
     'https://souvenir.microcms.io/api/v1/live?limit=50',
     key
-  )
-    .then((res) => res.json())
+  ).then((res) => res.json())
 
   return {
     props: {

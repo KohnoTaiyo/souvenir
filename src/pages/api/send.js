@@ -2,10 +2,11 @@ const sgMail = require('@sendgrid/mail')
 
 export default async function (req) {
   sgMail.setApiKey(process.env.NEXT_PUBLIC_MAIL_KEY)
+  sgMail.setTimeout(10000)
   const { message } = req.body
 
   const content = {
-    to: process.env.NEXT_PUBLIC_MAIL_NAME,
+    to: 'taiyowork66@gmail.com',
     from: process.env.NEXT_PUBLIC_MAIL_NAME,
     subject: `HPから${message.inquire}が届きました`,
     html: `

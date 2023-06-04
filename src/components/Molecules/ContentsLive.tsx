@@ -24,19 +24,19 @@ const LiveContents = () => {
   }
 
   useEffect(() => {
-    let unmounted = false
     const key = {
-      headers: { 'X-API-KEY': process.env.NEXT_PUBLIC_API_KEY ?? '' },
+      headers: { 'X-API-KEY': process.env.NEXT_PUBLIC_API_KEY || '' },
     }
 
-    ;(async () => {
-      if (!unmounted) {
-        const fetchDate = await fetch(
-          'https://souvenir.microcms.io/api/v1/live?limit=25',
-          key
-        )
-          .then((res) => res.json())
-          .then((res) => res.contents)
+    const fetchDate = async () => {
+      const fetchDate = await fetch(
+        'https://souvenir.microcms.io/api/v1/live?limit=25',
+        key
+      )
+        .then((res) => res.json())
+        .then((res) => res.contents)
+
+      if (fetchDate) {
         const currentDate = new Date().setHours(0, 0, 0, 0)
         const filteredData = fetchDate
           .sort((a: Article, b: Article) => {
@@ -57,11 +57,9 @@ const LiveContents = () => {
           setActiveLive(twoDaysDataToDisplay[0])
         }
       }
-    })()
-
-    return () => {
-      unmounted = true
     }
+
+    fetchDate()
   }, [])
 
   return (
