@@ -7,7 +7,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     const { message } = req.body
     const data = await resend.sendEmail({
       from: 'onboarding@resend.dev',
-      to: 'taiyowork66@gmail.com',
+      to: `${process.env.NEXT_PUBLIC_MAIL_NAME}`,
       subject: `HPから${message.inquire}が届きました`,
       html: `
       <p>内容：${message.inquire}</p>
