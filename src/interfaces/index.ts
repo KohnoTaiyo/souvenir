@@ -18,14 +18,7 @@ export type Article = {
   publishedAt: string
   revisedAt: string
   updatedAt: string
-}
-
-export type Inputs = {
-  name: string
-  email: string
-  text: string
-  inquire: string
-  kana: string
+  reserveUrl?: string
 }
 
 export type ProcessEnv = {
