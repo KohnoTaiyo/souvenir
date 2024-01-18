@@ -46,12 +46,12 @@ const LiveContents = () => {
             (value: Article) => new Date(currentDate) <= new Date(value.date)
           )
         if (filteredData.length >= 2) {
-          const twoDaysDataToDisplay = filteredData.slice(-2)
+          const twoDaysDataToDisplay = filteredData.slice(-2).reverse()
 
           setArticlesData(twoDaysDataToDisplay)
           setActiveLive(twoDaysDataToDisplay[0])
         } else {
-          const twoDaysDataToDisplay = fetchDate.slice(0, 2)
+          const twoDaysDataToDisplay = fetchDate.slice(0, 2).reverse()
 
           setArticlesData(twoDaysDataToDisplay)
           setActiveLive(twoDaysDataToDisplay[0])
@@ -100,6 +100,8 @@ const LiveContents = () => {
               <p className={`mt-1.5 mb-4 ${update ? 'animate-fadeL' : ''}`}>
                 {activeLive.guest}
               </p>
+              <p className="bg-gray-50 text-gray-350 py-1 px-1.5">Ticket</p>
+              <a className={`mt-1.5 mb-4 inline-block text-blue-400 ${update ? 'animate-fadeL' : ''}`} target='_blank' rel="noopener noreferrer" href={activeLive.reserveUrl || "https://docs.google.com/forms/d/e/1FAIpQLSfAfUqzD8UB8rd1qob4TWvvdEXDFU3dUShVzt3EQ4BM3mqStg/viewform"}>チケット予約</a>
             </div>
             <div className="hidden md:block w-7/12">
               <Image

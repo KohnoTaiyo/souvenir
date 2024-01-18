@@ -80,7 +80,10 @@ const LivePage = ({ data }: StaticArticle) => {
                   <p className="border-b border-gray-50 pb-1 mb-2">
                     Price : {val['price']}
                   </p>
-                  <p>Guest : {val['guest']}</p>
+                  <p className="border-b border-gray-50 pb-1 mb-2">Guest : {val['guest']}</p>
+                  <p>
+                    Ticket : <a className='text-blue-400' target='_blank' rel="noopener noreferrer" href={val.reserveUrl || "https://docs.google.com/forms/d/e/1FAIpQLSfAfUqzD8UB8rd1qob4TWvvdEXDFU3dUShVzt3EQ4BM3mqStg/viewform"}>チケット予約</a>
+                  </p>
                 </div>
                 <div className="w-1/2 ml-2 hidden lg:block mb-4">
                   <Image
@@ -108,7 +111,7 @@ export const getStaticProps: GetStaticProps = async () => {
     headers: { 'X-API-KEY': process.env.NEXT_PUBLIC_API_KEY ?? '' },
   }
   const fetchDate = await fetch(
-    'https://souvenir.microcms.io/api/v1/live?limit=50',
+    'https://souvenir.microcms.io/api/v1/live?limit=100',
     key
   ).then((res) => res.json())
 
